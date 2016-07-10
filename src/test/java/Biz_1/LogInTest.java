@@ -27,7 +27,6 @@ public class LogInTest {
         logInPage.enterPassword();
         logInPage.pressAuthoriseButton();
         landingPage.checkBookingButtonIsDisplayed();
-       // BOOKING landingPage.pressWeekButton();
     }
 
    @After
