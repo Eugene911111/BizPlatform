@@ -64,7 +64,6 @@ public class Resources {
         driver.findElement(delete).click();
     }
 
-
     public void deleteCreatedCategory() throws InterruptedException {
         pressEditButtonForCategory();
         pressDeleteCategoryButton();
@@ -75,8 +74,6 @@ public class Resources {
         clickEditButtonForCreatedResource();
         deleteButtonForCreatedResource();
         deleteButton2ForCreatedResource();
-
-
     }
     public void clickCreatedResource() throws InterruptedException {
         driver.findElement(createdResource).click();
@@ -90,8 +87,6 @@ public class Resources {
     public void deleteButton2ForCreatedResource() throws InterruptedException {
         driver.findElement(deleteButton2ForCreatedResource).click();
     }
-
-
 
     public void addNewCategory() throws InterruptedException {
         pressAddButton();
