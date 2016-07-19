@@ -43,8 +43,6 @@ public class MakingBooking {
         System.out.println("---------Booking is made-------------- ");
         booking.deleteBooking();
         System.out.println("---------Booking is deleted-------------- ");
-
-
     }
 
     @After
@@ -53,3 +51,5 @@ public class MakingBooking {
     }
 
 }
+
+

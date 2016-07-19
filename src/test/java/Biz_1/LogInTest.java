@@ -7,10 +7,12 @@ import org.junit.Before;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
+
 public class LogInTest {
     private FirefoxDriver driver;
     private LandingPage landingPage;
     private LogInPage logInPage;
+
 
     @Before
     public void precondition() {
@@ -21,13 +23,14 @@ public class LogInTest {
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
-        landingPage.openBizplatform();
-        landingPage.pressLogInButton();
-        logInPage.enterEmailField();
-        logInPage.enterPassword();
-        logInPage.pressAuthoriseButton();
+        landingPage.openLogInPage();
+        logInPage.fillLogInForm();
         landingPage.checkBookingButtonIsDisplayed();
     }
+
+
+
+
 
    @After
     public void testShutDown() {

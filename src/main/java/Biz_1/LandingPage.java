@@ -58,6 +58,10 @@ public class LandingPage {
             System.out.println("User Logged In successfully");
         }
     }
+    public void openLogInPage()throws InterruptedException {
+        openBizplatform().pressLogInButton();
+    }
+
 
         public LandingPage(WebDriver driver) {
         this.driver = driver;

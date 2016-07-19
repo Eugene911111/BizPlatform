@@ -30,6 +30,14 @@ public class LogInPage {
         driver.findElement(authoriseButton).click();
     }
 
+    public void fillLogInForm() throws InterruptedException {
+        enterEmailField();
+        enterPassword();
+        pressAuthoriseButton();
+    }
+
+
+
     public LogInPage(WebDriver driver) {
         this.driver = driver;
     }
