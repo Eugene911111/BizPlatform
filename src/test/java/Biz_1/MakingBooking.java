@@ -1,28 +1,9 @@
 package Biz_1;
 
-
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import static org.junit.Assert.assertFalse;
-
-
-public class MakingBooking {
-    private FirefoxDriver driver;
-    private LandingPage landingPage;
-    private LogInPage logInPage;
-    private Booking booking;
-
-    @Before
-    public void precondition() {
-        driver = new FirefoxDriver();
-        landingPage = new LandingPage(driver);
-        logInPage = new LogInPage(driver);
-        booking = new Booking(driver);
-    }
+public class MakingBooking extends AbstractTest {
+private final String EXPECTED_ERROR_MESSAGE = "Eugene";
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
@@ -37,19 +18,13 @@ public class MakingBooking {
         booking.clickOnEmailField();
         booking.pressSaveButton();
         Thread.sleep(3000);
-        String actualEmailErrorMessage = booking.getTextt();
-        String expectedErrorMessage = "Eugene";
-        Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
+        String actualEmailErrorMessage = booking.getText();
+        Assert.assertEquals(actualEmailErrorMessage, EXPECTED_ERROR_MESSAGE);
         System.out.println("---------Booking is made-------------- ");
         booking.deleteBooking();
         System.out.println("---------Booking is deleted-------------- ");
     }
-
-    @After
-    public void testShutDown() {
-        driver.close();
-    }
-
 }
+
 
 

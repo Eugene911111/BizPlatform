@@ -1,12 +1,9 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
 import java.util.concurrent.TimeUnit;
 
-public class Booking {
-    private WebDriver driver;
+public class Booking extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
     private final By bookingButton = By.xpath("//span[contains(., 'Bookings')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
     private final By mobileAppButton = By.xpath("//span[contains(., 'Mobile app')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
@@ -27,26 +24,26 @@ public class Booking {
     private final By delete1Button = By.xpath("//button[@class=\"btn btn-default delete text-uppercase ng-binding ng-scope\"]");
     private final By delete2Button = By.xpath("//div[@class=\"k-widget k-window\"]//button[@class=\"ok btn btn-default text-uppercase ng-binding\"]");
 
-//не проверенно
+    //не проверенно
     private final By date = By.xpath("//div[@class=\"main-menu-datepicker\"]//tr[@class=\"ng-scope\"][5]//span[contains(., '26')]");
     private final By firstBooking = By.xpath("html/body/div[5]/div/div/section/div/div/div[2]/div/div/div[1]/table/tbody/tr[2]/td[2]/div/table/tbody/tr[57]/td[1]");
     private final By weekButton = By.xpath(".//*[@id='managerApp']/div/ul[2]/li[3]/a");
 
 
     public Booking pressOnBooking() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(bookingField).click();
-        //driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        implicitlyWait(3, TimeUnit.SECONDS);
+        findElementsAndClick(bookingField);
         return this;
     }
+
     public Booking clickOnClientField() throws InterruptedException {
-        driver.findElement(clientNameField).click();
+        findElementsAndClick(clientNameField);
         driver.findElement(clientNameField).sendKeys(CLIENT_NAME);
         return this;
     }
 
     public Booking clickOnTelephoneNumberField() throws InterruptedException {
-        driver.findElement(phoneNumberField).click();
+       findElementsAndClick(phoneNumberField);
         driver.findElement(phoneNumberField).sendKeys(PHONE_NUMBER);
         return this;
     }
@@ -56,31 +53,28 @@ public class Booking {
         driver.findElement(emailField).sendKeys(EMAIL);
         return this;
     }
+
     public Booking pressSaveButton() throws InterruptedException {
-        driver.findElement(saveButton).click();
+        findElementsAndClick(saveButton);
         return this;
     }
-    public String getTextt() {
-        return  driver.findElement(By.xpath(BOOKING)).getText();
+
+    public String getText() {
+        return driver.findElement(By.xpath(BOOKING)).getText();
     }
 
     public Booking deleteBooking() throws InterruptedException {
-        driver.findElement(bookingWithMadeButton).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(delete1Button).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.findElement(delete2Button).click();
-
-
+        findElementsAndClick(bookingWithMadeButton);
+        implicitlyWait(3, TimeUnit.SECONDS);
+        findElementsAndClick(delete1Button);
+        implicitlyWait(3, TimeUnit.SECONDS);
+        findElementsAndClick(delete2Button);
         return this;
     }
 
-    public void pressWeekButton()throws InterruptedException {
+    public void pressWeekButton() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
-        driver.findElement(weekButton).click();
-    }
-    public Booking(WebDriver driver) {
-        this.driver = driver;
+        findElementsAndClick(weekButton);
     }
 }
 

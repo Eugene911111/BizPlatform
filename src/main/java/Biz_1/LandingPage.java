@@ -1,10 +1,11 @@
 package Biz_1;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import java.util.concurrent.TimeUnit;
 
-public class LandingPage {
-    private WebDriver driver;
+public class LandingPage extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
     private final By logInButton = By.xpath(".//*[@id='nav']/div/nav/div[2]/div/ul/li[7]/a");
     private final By registerButton = By.xpath(".//*[@id='nav']//a[@href=\"#join\"]");
@@ -24,7 +25,7 @@ public class LandingPage {
 
 
     public String getText() {
-        return  driver.findElement(By.xpath(REGISTRATION_WINDOW)).getText();
+        return driver.findElement(By.xpath(REGISTRATION_WINDOW)).getText();
     }
 
     public LandingPage openBizplatform() {
@@ -36,11 +37,12 @@ public class LandingPage {
     public void pressLogInButton() throws InterruptedException {
         driver.findElement(logInButton).click();
     }
+
     public void pressRegisterButton() throws InterruptedException {
-        driver.findElement(registerButton).click();
+        findElementsAndClick(registerButton);
     }
 
-    public void registerRandomUser()throws InterruptedException {
+    public void registerRandomUser() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.findElement(registrationNameField).clear();
         driver.findElement(registrationNameField).sendKeys(SEND_KEYS_TO_REGISTRATION_NAME_FIELD);
@@ -50,21 +52,17 @@ public class LandingPage {
         driver.findElement(registrationPasswordField).sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
         driver.findElement(registrationConfirmationPasswordField).clear();
         driver.findElement(registrationConfirmationPasswordField).sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
-        driver.findElement(tryForFreeButton).click();
+        findElementsAndClick(tryForFreeButton);
     }
 
-    public void checkBookingButtonIsDisplayed() throws InterruptedException{
-        if(( driver.findElement(bookingButton)).isDisplayed()){
+    public void checkBookingButtonIsDisplayed() throws InterruptedException {
+        if ((driver.findElement(bookingButton)).isDisplayed()) {
             System.out.println("User Logged In successfully");
         }
     }
-    public void openLogInPage()throws InterruptedException {
+
+    public void openLogInPage() throws InterruptedException {
         openBizplatform().pressLogInButton();
-    }
-
-
-        public LandingPage(WebDriver driver) {
-        this.driver = driver;
     }
 
 }

@@ -1,11 +1,8 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-
-public class Resources {
-    private WebDriver driver;
+public class Resources extends AbstractPageObject {
     private final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
     private final By categoryButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@class=\"ng-binding ng-scope\"][contains(., 'Category')]");
     private final By resourceButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@class=\"ng-binding ng-scope\"][contains(., 'Resource')]");
@@ -22,14 +19,7 @@ public class Resources {
     private final By deleteButtonForCreatedResource = By.xpath("//div[@class=\"buttons-block\"]//button[@class=\"btn ng-binding\"]");
     private final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
 
-//check comment
-
-
     private static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
-
-    public Resources(WebDriver driver) {
-        this.driver = driver;
-    }
 
     public Resources openResources() {
         driver.get(RESOURSES_PAGE);
@@ -37,31 +27,37 @@ public class Resources {
     }
 
     public void pressAddButton() throws InterruptedException {
-        driver.findElement(addResourceButton).click();
+        findElementsAndClick(addResourceButton);
     }
+
     public void selectToCreateNewCategory() throws InterruptedException {
-        driver.findElement(categoryButton).click();
+        findElementsAndClick(categoryButton);
     }
+
     public Resources enterNewCategoryName(String categoryNameValue) throws InterruptedException {
         driver.findElement(fieldForCategoryName).sendKeys(categoryNameValue);
         return this;
     }
+
     public void pressSaveButton() throws InterruptedException {
-        driver.findElement(saveButton).click();
+        findElementsAndClick(saveButton);
     }
+
     public String getTextFromCreatedcategory() {
-        return  driver.findElement(By.xpath(CREATED_CATEGORY_IN_LIST)).getText();
+        return driver.findElement(By.xpath(CREATED_CATEGORY_IN_LIST)).getText();
 
     }
 
     public void pressEditButtonForCategory() throws InterruptedException {
-        driver.findElement(editButtonForCategory).click();
+        findElementsAndClick(editButtonForCategory);
     }
+
     public void pressDeleteCategoryButton() throws InterruptedException {
         driver.findElement(deleteCategoryButton).click();
     }
+
     public void pressDelete() throws InterruptedException {
-        driver.findElement(delete).click();
+        findElementsAndClick(delete);
     }
 
     public void deleteCreatedCategory() throws InterruptedException {
@@ -69,23 +65,28 @@ public class Resources {
         pressDeleteCategoryButton();
         pressDelete();
     }
+
     public void deleteCreatedResource() throws InterruptedException {
         clickCreatedResource();
         clickEditButtonForCreatedResource();
         deleteButtonForCreatedResource();
         deleteButton2ForCreatedResource();
     }
+
     public void clickCreatedResource() throws InterruptedException {
-        driver.findElement(createdResource).click();
+        findElementsAndClick(createdResource);
     }
+
     public void clickEditButtonForCreatedResource() throws InterruptedException {
-        driver.findElement(editButtonForCreatedResource).click();
+        findElementsAndClick(editButtonForCreatedResource);
     }
+
     public void deleteButtonForCreatedResource() throws InterruptedException {
-        driver.findElement(deleteButtonForCreatedResource).click();
+        findElementsAndClick(deleteButtonForCreatedResource);
     }
+
     public void deleteButton2ForCreatedResource() throws InterruptedException {
-        driver.findElement(deleteButton2ForCreatedResource).click();
+        findElementsAndClick(deleteButton2ForCreatedResource);
     }
 
     public void addNewCategory() throws InterruptedException {
@@ -96,16 +97,19 @@ public class Resources {
     }
 
     public void selectToCreateNewResource() throws InterruptedException {
-        driver.findElement(resourceButton).click();
+        findElementsAndClick(resourceButton);
     }
+
     public Resources enterNewResourceName(String categoryNameValue) throws InterruptedException {
         driver.findElement(fieldForResourceName).sendKeys(categoryNameValue);
         return this;
     }
+
     public void pressDropDownButtonToSelectCategory() throws InterruptedException {
         Thread.sleep(2000);
-        driver.findElement(dropDownButtonToSelectCategory).click();
+        findElementsAndClick(dropDownButtonToSelectCategory);
     }
+
     public Resources refreshResources() throws InterruptedException {
         driver.navigate().refresh();
         return this;

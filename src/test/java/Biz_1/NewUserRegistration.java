@@ -5,15 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class NewUserRegistration {
-    private FirefoxDriver driver;
-    private LandingPage landingPage;
-
-    @Before
-    public void precondition() {
-        driver = new FirefoxDriver();
-        landingPage = new LandingPage(driver);
-    }
+public class NewUserRegistration extends AbstractTest{
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
@@ -25,11 +17,6 @@ public class NewUserRegistration {
         String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";
         Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
         System.out.println("---------New user registration test passed successfully-------------- ");
-    }
-
-       @After
-       public void postcondition() {
-       driver.close();
     }
 
 }
