@@ -1,9 +1,6 @@
 package Biz_1;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class NewUserRegistration extends AbstractTest{
 

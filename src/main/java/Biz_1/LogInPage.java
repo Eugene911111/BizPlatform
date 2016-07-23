@@ -21,7 +21,7 @@ public class LogInPage extends AbstractPageObject {
     private static final String SEND_KEYS_TO_PASSWORD_FIELD = "249756210";
 
     public void enterEmailField() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+     //   driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         findElementsAndClear(emailLogInField);
         driver.findElement(emailLogInField).sendKeys(SEND_KEYS_TO_EMAIL_FIELD);
     }

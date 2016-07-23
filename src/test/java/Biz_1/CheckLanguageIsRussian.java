@@ -1,6 +1,9 @@
 package Biz_1;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.util.concurrent.TimeUnit;
 
 public class CheckLanguageIsRussian extends AbstractTest{
@@ -9,7 +12,7 @@ public class CheckLanguageIsRussian extends AbstractTest{
     public void firstTest() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.fillLogInForm();
-        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+       // driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
         globalSettings.openGlobalSettings();
         Thread.sleep(2000);
         globalSettings.pressLanguageDropDown();
