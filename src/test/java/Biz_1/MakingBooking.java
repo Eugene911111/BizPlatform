@@ -1,20 +1,16 @@
 package Biz_1;
 
-import org.junit.Assert;
+import org.junit.*;
 
 public class MakingBooking extends AbstractTest {
 private final String EXPECTED_ERROR_MESSAGE = "Eugene";
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
-        landingPage.openBizplatform();
-        landingPage.pressLogInButton();
-        logInPage.enterEmailField();
-        logInPage.enterPassword();
-        logInPage.pressAuthoriseButton();
+        landingPage.openLogInPage();
+        logInPage.fillLogInForm();
         booking.pressOnBooking();
-        booking.clickOnClientField();
-        booking.clickOnTelephoneNumberField();
+        booking.clickOnClientField().clickOnTelephoneNumberField();
         booking.clickOnEmailField();
         booking.pressSaveButton();
         Thread.sleep(3000);

@@ -1,10 +1,8 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
-
 public class LandingPage extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
     private final By logInButton = By.xpath(".//*[@id='nav']/div/nav/div[2]/div/ul/li[7]/a");
@@ -23,12 +21,11 @@ public class LandingPage extends AbstractPageObject {
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     private static final String REGISTRATION_WINDOW = "//div[@class='gray-border']//following-sibling::p";
 
-
     public String getText() {
         return driver.findElement(By.xpath(REGISTRATION_WINDOW)).getText();
     }
 
-    public LandingPage openBizplatform() {
+    public LandingPage openBizpPlatform() {
         driver.manage().window().maximize();
         driver.get(BIZPLATFORM_MAIN);
         return this;
@@ -43,16 +40,22 @@ public class LandingPage extends AbstractPageObject {
     }
 
     public void registerRandomUser() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        driver.findElement(registrationNameField).clear();
-        driver.findElement(registrationNameField).sendKeys(SEND_KEYS_TO_REGISTRATION_NAME_FIELD);
-        driver.findElement(registrationEmailField).clear();
-        driver.findElement(registrationEmailField).sendKeys(SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD);
-        driver.findElement(registrationPasswordField).clear();
-        driver.findElement(registrationPasswordField).sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
-        driver.findElement(registrationConfirmationPasswordField).clear();
-        driver.findElement(registrationConfirmationPasswordField).sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
+        implicitlyWait(3, TimeUnit.SECONDS);
+        findElementsAndClear(registrationNameField);
+        findElementsAndSendKeys(registrationNameField, SEND_KEYS_TO_REGISTRATION_NAME_FIELD);
+        findElementsAndClear(registrationEmailField);
+        findElementsAndSendKeys(registrationEmailField, SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD);
+        findElementsAndClear(registrationPasswordField);
+        findElementsAndSendKeys(registrationPasswordField, SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
+        findElementsAndClear(registrationConfirmationPasswordField);
+        findElementsAndSendKeys(registrationConfirmationPasswordField, SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
         findElementsAndClick(tryForFreeButton);
+        try {
+            //try something
+        } catch(Exception e){
+            //Actual logging of error
+            logger.error("some message", e);
+        }
     }
 
     public void checkBookingButtonIsDisplayed() throws InterruptedException {
@@ -62,7 +65,12 @@ public class LandingPage extends AbstractPageObject {
     }
 
     public void openLogInPage() throws InterruptedException {
-        openBizplatform().pressLogInButton();
+        openBizpPlatform().pressLogInButton();
     }
+
+
+
+
+
 
 }

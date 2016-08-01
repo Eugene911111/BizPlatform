@@ -46,8 +46,7 @@ public abstract class AbstractTest {
     }
     @Before
     public void precondition() {
-        driver = new ChromeDriver(service);
-
+        driver = new FirefoxDriver();
         (logInPage = new LogInPage()).setDriver(driver);
         (landingPage = new LandingPage()).setDriver(driver);
         (booking = new Booking()).setDriver(driver);

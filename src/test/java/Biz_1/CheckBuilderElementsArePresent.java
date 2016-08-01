@@ -4,11 +4,9 @@ public class CheckBuilderElementsArePresent extends AbstractTest {
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
-        landingPage.openBizplatform();
-        landingPage.pressLogInButton();
-        logInPage.enterEmailField();
-        logInPage.enterPassword();
-        logInPage.pressAuthoriseButton();
+        landingPage.openLogInPage();
+        logInPage.fillLogInForm();
+        Thread.sleep(3000);
         mobileBuilder.clickMobileBuilder();
         mobileBuilder.imageIsDisplayed();
     }

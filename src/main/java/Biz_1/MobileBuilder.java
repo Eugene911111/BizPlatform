@@ -5,9 +5,10 @@ import java.util.concurrent.TimeUnit;
 
 public class MobileBuilder extends AbstractPageObject {
     //private final By mobileBuilderImage = By.xpath("//img[@class=\"list-item ng-scope\"][6]");
-    private final By mobileBuilderImage = By.xpath("//img[@src=\"http://mobile.bizplatform.co:8083/content/standard/backgrounds/sm/PhotoStudio/19.jpg\"]");
+    private final By mobileBuilderImage = By.xpath("//div[@class=\"content\"]//following-sibling::*//img [contains (., \"\")]");
+                                                    //img[@src="http://mobile.bizplatform.co:8083/content/standard/backgrounds/sm/PhotoStudio/20.jpg"]
     private static final String MOBILE_BUILDER_PAGE = "http://bizplatform.co/Venue/CommandCenter#/builder/home";
-    private final By mobileAppButton = By.xpath("//span[contains(., 'Mobile app')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
+    private final By mobileAppButton = By.xpath("//span[contains(., 'При')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
 
     public void clickMobileBuilder() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);

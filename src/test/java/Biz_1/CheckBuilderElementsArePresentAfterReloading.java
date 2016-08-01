@@ -4,11 +4,8 @@ public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest{
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
-        landingPage.openBizplatform();
-        landingPage.pressLogInButton();
-        logInPage.enterEmailField();
-        logInPage.enterPassword();
-        logInPage.pressAuthoriseButton();
+        landingPage.openLogInPage();
+        logInPage.fillLogInForm();
         mobileBuilder.clickMobileBuilder();
         // Thread.sleep(4000);
         mobileBuilder.refreshMobileBuilder();
