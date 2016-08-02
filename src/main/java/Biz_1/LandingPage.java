@@ -20,6 +20,7 @@ public class LandingPage extends AbstractPageObject {
     private static final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     private static final String REGISTRATION_WINDOW = "//div[@class='gray-border']//following-sibling::p";
+    private static final String BOOKING_BUTTON = ("//span[@class=\"ng-binding\"]//div[@class=\"heading-wrapper ng-scope\"]//span"); ////rewright selector
 
     public String getText() {
         return driver.findElement(By.xpath(REGISTRATION_WINDOW)).getText();
@@ -60,6 +61,7 @@ public class LandingPage extends AbstractPageObject {
 
     public void checkBookingButtonIsDisplayed() throws InterruptedException {
         if ((driver.findElement(bookingButton)).isDisplayed()) {
+
             System.out.println("User Logged In successfully");
         }
     }

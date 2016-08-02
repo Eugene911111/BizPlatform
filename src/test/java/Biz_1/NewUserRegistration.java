@@ -2,10 +2,12 @@ package Biz_1;
 
 import org.junit.Assert;
 
+import java.util.concurrent.TimeUnit;
+
 public class NewUserRegistration extends AbstractTest{
 
     @org.junit.Test
-    public void firstTest() throws InterruptedException {
+    public void newUserRegistration() throws InterruptedException {
         landingPage.openBizpPlatform();
         landingPage.pressRegisterButton();
         landingPage.registerRandomUser();

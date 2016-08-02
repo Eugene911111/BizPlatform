@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.By.xpath;
 
-public class CheckLanguageIsRussian extends AbstractTest {
+public class CheckLanguageIsEnglish extends AbstractTest {
 
     @org.junit.Test
     public void firstTest() throws InterruptedException {
@@ -18,11 +18,11 @@ public class CheckLanguageIsRussian extends AbstractTest {
         globalSettings.openGlobalSettings();
         globalSettings.implicitlyWait(3, TimeUnit.SECONDS);
         globalSettings.pressLanguageDropDown();
-        globalSettings.selectRussianLanguage();
+        globalSettings.selectEnglishLanguage();
         globalSettings.pressSaveButton();
         globalSettings.refreshGlobalSettings();
         String actualTextFromGlobalSettingsPageTitle = globalSettings.getTextFromGlobalSettingsPageTitle();
-        String expectedTextFromGlobalSettingsPageTitle = "ГЛОБАЛЬНЫЕ НАСТРОЙКИ";
+        String expectedTextFromGlobalSettingsPageTitle = "GLOBAL SETTINGS";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);
 
     }

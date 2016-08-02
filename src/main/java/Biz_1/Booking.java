@@ -1,6 +1,7 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
+
 import java.util.concurrent.TimeUnit;
 
 public class Booking extends AbstractPageObject {
@@ -11,7 +12,7 @@ public class Booking extends AbstractPageObject {
     private final By promoteButton = By.xpath("//span[contains(., 'Promote')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
     private final By clientsButton = By.xpath("//span[contains(., 'Clients')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
     private final By errorMessage = By.xpath("//span[contains (., 'Chosen cell is not available')]");
-    private final By bookingField = By.xpath("//tr[@class=\"k-middle-row\"][10]/td");
+    private final By bookingField = By.xpath("//tr[@class=\"k-middle-row\"][24]/td");
     private final By clientNameField = By.name("client");
     private static final String CLIENT_NAME = "Eugene";
     private final By phoneNumberField = By.name("phone");
@@ -43,7 +44,7 @@ public class Booking extends AbstractPageObject {
     }
 
     public Booking clickOnTelephoneNumberField() throws InterruptedException {
-       findElementsAndClick(phoneNumberField);
+        findElementsAndClick(phoneNumberField);
         driver.findElement(phoneNumberField).sendKeys(PHONE_NUMBER);
         return this;
     }
@@ -61,13 +62,12 @@ public class Booking extends AbstractPageObject {
 
     public String getText() {
         return driver.findElement(By.xpath(BOOKING)).getText();
+
     }
 
     public Booking deleteBooking() throws InterruptedException {
         findElementsAndClick(bookingWithMadeButton);
-        implicitlyWait(3, TimeUnit.SECONDS);
         findElementsAndClick(delete1Button);
-        implicitlyWait(3, TimeUnit.SECONDS);
         findElementsAndClick(delete2Button);
         return this;
     }

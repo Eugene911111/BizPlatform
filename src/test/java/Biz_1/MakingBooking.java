@@ -1,24 +1,34 @@
 package Biz_1;
 
 import org.junit.*;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MakingBooking extends AbstractTest {
-private final String EXPECTED_ERROR_MESSAGE = "Eugene";
+    private final String EXPECTED_CLIENT_NAME = "Eugene";
 
     @org.junit.Test
-    public void firstTest() throws InterruptedException {
+    public void bookingCreation() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.fillLogInForm();
         booking.pressOnBooking();
         booking.clickOnClientField().clickOnTelephoneNumberField();
         booking.clickOnEmailField();
         booking.pressSaveButton();
-        Thread.sleep(3000);
-        String actualEmailErrorMessage = booking.getText();
-        Assert.assertEquals(actualEmailErrorMessage, EXPECTED_ERROR_MESSAGE);
+        Thread.sleep(2500);
+        String actualClientName = booking.getText();
+        Assert.assertEquals(EXPECTED_CLIENT_NAME, actualClientName);
         System.out.println("---------Booking is made-------------- ");
+
+    }
+
+    @org.junit.Test
+    public void bookingDelete() throws InterruptedException {
+        landingPage.openLogInPage();
+        logInPage.fillLogInForm();
+        Thread.sleep(2500);
         booking.deleteBooking();
-        System.out.println("---------Booking is deleted-------------- ");
+
     }
 }
 

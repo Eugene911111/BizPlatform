@@ -27,12 +27,9 @@ public abstract class AbstractTest {
     private static ChromeDriverService service;
     private static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\egolub\\IdeaProjects\\BizTests\\driver\\chromedriver.exe";
 
-   // public String setBrowser(String browser) {
-      //  return driver.findElement(By.xpath(CREATED_CATEGORY_IN_LIST)).getText();
 
-   // }
-
-    @BeforeClass
+//----FOR CHROME
+   /* @BeforeClass
     public static void createAndStartService() throws IOException {
         service = new ChromeDriverService.Builder()
                 .usingDriverExecutable(new File(PATH_TO_CHROMEDRIVER_EXE))
@@ -40,10 +37,13 @@ public abstract class AbstractTest {
                 .build();
         service.start();
     }
+
     @AfterClass
     public static void createAndStopService() {
         service.stop();
     }
+    */
+
     @Before
     public void precondition() {
         driver = new FirefoxDriver();

@@ -1,6 +1,6 @@
 package Biz_1;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
 
 public class Resources extends AbstractPageObject {
     private final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
@@ -19,9 +19,9 @@ public class Resources extends AbstractPageObject {
     private final By deleteButtonForCreatedResource = By.xpath("//div[@class=\"buttons-block\"]//button[@class=\"btn ng-binding\"]");
     private final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
 
-    private static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
+    public static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
 
-    public Resources openResources() {
+    public Resources openResources()throws InterruptedException  {
         driver.get(RESOURSES_PAGE);
         return this;
     }

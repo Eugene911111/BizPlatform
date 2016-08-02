@@ -11,6 +11,9 @@ public class GlobalSettings extends AbstractPageObject implements Constants {
     public void selectRussianLanguage() throws InterruptedException {
         findElementsAndClick(xpath(GLOBAL_RUSSIAN_LANGUAGE));
     }
+    public void selectEnglishLanguage() throws InterruptedException {
+        findElementsAndClick(xpath(GLOBAL_ENGLISH_LANGUAGE));
+    }
 
     public void pressSaveButton() throws InterruptedException {
         findElementsAndClick(xpath(GLOBAL_SAVE_BUTTON));
