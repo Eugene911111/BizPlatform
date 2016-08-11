@@ -2,17 +2,9 @@ package Biz_1;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-
-import java.io.File;
-import java.io.IOException;
 
 public abstract class AbstractTest {
 
@@ -23,10 +15,10 @@ public abstract class AbstractTest {
     protected Resources resources;
     protected Booking booking;
     protected GlobalSettings globalSettings;
-
+    protected Specialists specialists;
+    protected WorkingTime workingTime;
     private static ChromeDriverService service;
     private static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\egolub\\IdeaProjects\\BizTests\\driver\\chromedriver.exe";
-
 
 //----FOR CHROME
    /* @BeforeClass
@@ -52,6 +44,10 @@ public abstract class AbstractTest {
         (booking = new Booking()).setDriver(driver);
         (mobileBuilder = new MobileBuilder()).setDriver(driver);
         (globalSettings = new GlobalSettings()).setDriver(driver);
+        (resources = new Resources()).setDriver(driver);
+        (specialists = new Specialists()).setDriver(driver);
+        (workingTime = new WorkingTime()).setDriver(driver);
+
     }
 
     @After

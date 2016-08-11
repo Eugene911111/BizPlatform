@@ -1,17 +1,15 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public class Booking extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
-    private final By bookingButton = By.xpath("//span[contains(., 'Bookings')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
-    private final By mobileAppButton = By.xpath("//span[contains(., 'Mobile app')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
-    private final By toolsForBusinessButton = By.xpath("//span[contains(., 'Tools for business')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
-    private final By promoteButton = By.xpath("//span[contains(., 'Promote')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
-    private final By clientsButton = By.xpath("//span[contains(., 'Clients')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
-    private final By errorMessage = By.xpath("//span[contains (., 'Chosen cell is not available')]");
     private final By bookingField = By.xpath("//tr[@class=\"k-middle-row\"][24]/td");
     private final By clientNameField = By.name("client");
     private static final String CLIENT_NAME = "Eugene";
@@ -20,61 +18,58 @@ public class Booking extends AbstractPageObject {
     private final By emailField = By.name("email");
     private static final String EMAIL = "golubeugene91155@gmail.com";
     private final By saveButton = By.xpath("//button[@class=\"btn btn-default save text-uppercase ng-scope\"]");
-    private static final String BOOKING = "//label[@class=\"client ng-binding\"]";
-    private final By bookingWithMadeButton = By.xpath("//label[@class=\"client ng-binding\"]");
+    protected final By booking1 = By.xpath("//div[@class=\"content-wrp ng-scope\"]//div[@class=\"client-icon-wrp\"]//label[@class=\"client ng-binding\"]\n");
+
+    protected final By bookingWithMadeButton = By.xpath("//label[@class=\"client ng-binding\"]");
     private final By delete1Button = By.xpath("//button[@class=\"btn btn-default delete text-uppercase ng-binding ng-scope\"]");
     private final By delete2Button = By.xpath("//div[@class=\"k-widget k-window\"]//button[@class=\"ok btn btn-default text-uppercase ng-binding\"]");
 
     //не проверенно
     private final By date = By.xpath("//div[@class=\"main-menu-datepicker\"]//tr[@class=\"ng-scope\"][5]//span[contains(., '26')]");
-    private final By firstBooking = By.xpath("html/body/div[5]/div/div/section/div/div/div[2]/div/div/div[1]/table/tbody/tr[2]/td[2]/div/table/tbody/tr[57]/td[1]");
     private final By weekButton = By.xpath(".//*[@id='managerApp']/div/ul[2]/li[3]/a");
 
 
-    public Booking pressOnBooking() throws InterruptedException {
-        implicitlyWait(3, TimeUnit.SECONDS);
-        findElementsAndClick(bookingField);
+    public Booking pressOnBookingField() throws InterruptedException {
+        waiter(bookingField, WebElement::click);
         return this;
     }
 
     public Booking clickOnClientField() throws InterruptedException {
-        findElementsAndClick(clientNameField);
-        driver.findElement(clientNameField).sendKeys(CLIENT_NAME);
+        waiter(clientNameField, c -> c.sendKeys(CLIENT_NAME));
         return this;
     }
 
     public Booking clickOnTelephoneNumberField() throws InterruptedException {
-        findElementsAndClick(phoneNumberField);
-        driver.findElement(phoneNumberField).sendKeys(PHONE_NUMBER);
+        waiter(phoneNumberField, c -> c.sendKeys(PHONE_NUMBER));
         return this;
     }
 
     public Booking clickOnEmailField() throws InterruptedException {
-        driver.findElement(emailField).click();
-        driver.findElement(emailField).sendKeys(EMAIL);
+        waiter(emailField, c -> c.sendKeys(EMAIL));
         return this;
     }
 
     public Booking pressSaveButton() throws InterruptedException {
-        findElementsAndClick(saveButton);
+        waiter(saveButton, WebElement::click);
         return this;
     }
 
+    // sdfksfjlkj
     public String getText() {
-        return driver.findElement(By.xpath(BOOKING)).getText();
+        // WebElement element = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.xpath(BOOKING)));
+        return driver.findElement(booking1).getText();
 
     }
 
     public Booking deleteBooking() throws InterruptedException {
-        findElementsAndClick(bookingWithMadeButton);
-        findElementsAndClick(delete1Button);
-        findElementsAndClick(delete2Button);
+        waiter(bookingWithMadeButton, WebElement::click);
+        waiter(delete1Button, WebElement::click);
+        waiter(delete2Button, WebElement::click);
         return this;
     }
 
     public void pressWeekButton() throws InterruptedException {
-        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
-        findElementsAndClick(weekButton);
+        waiter(weekButton,WebElement::click);
     }
 }
 

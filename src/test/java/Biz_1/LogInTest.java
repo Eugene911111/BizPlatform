@@ -5,10 +5,11 @@ import org.openqa.selenium.By;
 public class LogInTest extends AbstractTest implements Constants {
 
     @org.junit.Test
-    public void firstTest() throws InterruptedException {
+    public void logInTest() throws InterruptedException {
         landingPage.openLogInPage();
-        logInPage.fillLogInForm();
+        logInPage.logIn();
         landingPage.checkElementIsDisplayed(By.xpath(BOOKING_BUTTON));
+
     }
 }
 

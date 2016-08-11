@@ -1,11 +1,20 @@
 package Biz_1;
 
+import com.gargoylesoftware.htmlunit.WebAssert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+
 public class LandingPage extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
-    private final By logInButton = By.xpath(".//*[@id='nav']/div/nav/div[2]/div/ul/li[7]/a");
+    private final By logInButton = By.xpath("//div[@id=\"wrap\"]//a[@class=\"login\"]");
     private final By registerButton = By.xpath(".//*[@id='nav']//a[@href=\"#join\"]");
     private final By tryForFreeButton = By.xpath("//button[@ng-click=\"vm.register()\"]");
     private final By bookingButton = By.xpath("//span[contains(., 'Booking')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
@@ -19,11 +28,15 @@ public class LandingPage extends AbstractPageObject {
     private static final String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
     private static final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
-    private static final String REGISTRATION_WINDOW = "//div[@class='gray-border']//following-sibling::p";
-    private static final String BOOKING_BUTTON = ("//span[@class=\"ng-binding\"]//div[@class=\"heading-wrapper ng-scope\"]//span"); ////rewright selector
+    protected   final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
 
-    public String getText() {
-        return driver.findElement(By.xpath(REGISTRATION_WINDOW)).getText();
+    public String getTextFromLocator(By element1) throws InterruptedException {
+        WebDriverWait element = new WebDriverWait(driver, 10);
+        Boolean until = element.until(
+                (ExpectedCondition<Boolean>) d -> !d.findElement(element1).getText().equals(""));
+
+        return until ? driver.findElement(element1).getText() : "----";
+
     }
 
     public LandingPage openBizpPlatform() {
@@ -33,37 +46,25 @@ public class LandingPage extends AbstractPageObject {
     }
 
     public void pressLogInButton() throws InterruptedException {
-        driver.findElement(logInButton).click();
+        waiter(logInButton, WebElement::click);
     }
 
     public void pressRegisterButton() throws InterruptedException {
-        findElementsAndClick(registerButton);
+        waiter(registerButton, WebElement::click);
     }
 
     public void registerRandomUser() throws InterruptedException {
-        implicitlyWait(3, TimeUnit.SECONDS);
-        findElementsAndClear(registrationNameField);
-        findElementsAndSendKeys(registrationNameField, SEND_KEYS_TO_REGISTRATION_NAME_FIELD);
-        findElementsAndClear(registrationEmailField);
-        findElementsAndSendKeys(registrationEmailField, SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD);
-        findElementsAndClear(registrationPasswordField);
-        findElementsAndSendKeys(registrationPasswordField, SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
-        findElementsAndClear(registrationConfirmationPasswordField);
-        findElementsAndSendKeys(registrationConfirmationPasswordField, SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
-        findElementsAndClick(tryForFreeButton);
-        try {
-            //try something
-        } catch(Exception e){
-            //Actual logging of error
-            logger.error("some message", e);
-        }
-    }
+        waiter(registrationNameField, WebElement::click);
+        waiter(registrationNameField, WebElement::clear);
+        waiter(registrationNameField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_NAME_FIELD));
+        waiter(registrationEmailField, WebElement::clear);
+        waiter(registrationEmailField, c -> c.sendKeys(SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD));
+        waiter(registrationPasswordField,WebElement::clear);
+        waiter(registrationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD));
+        waiter(registrationConfirmationPasswordField,WebElement::clear);
+        waiter(registrationConfirmationPasswordField, c-> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD));
+        waiter(tryForFreeButton, WebElement::click);
 
-    public void checkBookingButtonIsDisplayed() throws InterruptedException {
-        if ((driver.findElement(bookingButton)).isDisplayed()) {
-
-            System.out.println("User Logged In successfully");
-        }
     }
 
     public void openLogInPage() throws InterruptedException {

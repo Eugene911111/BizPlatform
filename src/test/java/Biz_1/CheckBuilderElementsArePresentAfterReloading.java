@@ -3,13 +3,14 @@ package Biz_1;
 public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest{
 
     @org.junit.Test
-    public void firstTest() throws InterruptedException {
+    public void checkBuilderElementsArePresentAfterReloading() throws InterruptedException {
         landingPage.openLogInPage();
-        logInPage.fillLogInForm();
+        logInPage.logIn();
         mobileBuilder.clickMobileBuilder();
+        mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
         // Thread.sleep(4000);
         mobileBuilder.refreshMobileBuilder();
-        mobileBuilder.imageIsDisplayed();
+        mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
     }
 
 

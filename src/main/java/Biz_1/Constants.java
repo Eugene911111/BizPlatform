@@ -1,6 +1,7 @@
 package Biz_1;
 
 public interface Constants {
+
     String GLOBAL_PAGE_TITLE = "//h4[@class=\"page-title ng-scope\"]";
     String GLOBAL_RUSSIAN_LANGUAGE = ".//*[@id='commandViews']/div/div/div[1]/div/div[7]/div[2]/div/ul/li[2]/a";
     String GLOBAL_ENGLISH_LANGUAGE = ".//*[@id='commandViews']/div/div/div[1]/div/div[7]/div[2]/div/ul/li[1]/a";
