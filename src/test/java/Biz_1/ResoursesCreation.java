@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ResoursesCreation extends AbstractTest {
     public static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
-    private static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
     @org.junit.Test
     public void a_addNewResourceCategory() throws InterruptedException {
 

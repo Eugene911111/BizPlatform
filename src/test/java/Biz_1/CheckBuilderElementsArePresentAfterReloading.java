@@ -1,18 +1,28 @@
 package Biz_1;
 
-public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest{
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.io.File;
+
+    public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
+    private final String screenshotName = "D:\\screenshot\\mobileBuilder\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
 
     @org.junit.Test
-    public void checkBuilderElementsArePresentAfterReloading() throws InterruptedException {
+    public void checkBuilderElementsArePresentAfterReloading() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
         mobileBuilder.clickMobileBuilder();
         mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
-        // Thread.sleep(4000);
         mobileBuilder.refreshMobileBuilder();
-        mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
+        try {
+            mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
+        } catch (Exception e) {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File(screenshotName));
+            log.error("Screenshot of the bug was saved to: " + screenshotName);
+            throw new Exception(e);
+        }
     }
-
-
-
 }
