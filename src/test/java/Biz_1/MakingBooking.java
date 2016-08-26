@@ -19,10 +19,10 @@ public class MakingBooking extends AbstractTest {
         booking.clickOnClientField().clickOnTelephoneNumberField().clickOnEmailField();
         booking.pressSaveButton();
 
-     //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
+        //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
         //String actualClientName = landingPage.getTextFromLocator(booking.booking1);
         //log.info(actualClientName);
-       // Assert.assertEquals(EXPECTED_CLIENT_NAME, actualClientName);
+        // Assert.assertEquals(EXPECTED_CLIENT_NAME, actualClientName);
         log.debug("---------Booking is made-------------- ");
 
     }

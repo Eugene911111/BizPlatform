@@ -43,8 +43,8 @@ public class SpecialistCreation extends AbstractTest implements Constants {
         specialists.getSpecialistsPage();
 //        specialists.pressCreatedSpecialist();
 //        specialists.pressEditButtonForCategory();
-       // specialists.deleteCreatedSpecialist();
-       // specialists.pressDeleteCpecialist();
+        // specialists.deleteCreatedSpecialist();
+        // specialists.pressDeleteCpecialist();
 
         try {
             specialists.pressCreatedSpecialist();

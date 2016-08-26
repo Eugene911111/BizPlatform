@@ -1,0 +1,1 @@
+"# Bizplatform_tests"  initgit add README.mdgit commit -m "first commit"git remote add origin https://github.com/Eugene911111/Bizplatform_tests.gitgit push -u origin master

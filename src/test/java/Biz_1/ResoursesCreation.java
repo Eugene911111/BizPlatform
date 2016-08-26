@@ -38,7 +38,7 @@ public class ResoursesCreation extends AbstractTest {
         landingPage.openLogInPage();
         logInPage.logIn();
         driver.get(RESOURSES_PAGE);
-        //resources.refreshResource();
+        resources.refreshResource();
         resources.deleteCreatedResource();
     }
 

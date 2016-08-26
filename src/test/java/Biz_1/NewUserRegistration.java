@@ -2,9 +2,7 @@ package Biz_1;
 
 import org.junit.Assert;
 
-import java.util.concurrent.TimeUnit;
-
-public class NewUserRegistration extends AbstractTest{
+public class NewUserRegistration extends AbstractTest {
 
     @org.junit.Test
     public void newUserRegistration() throws InterruptedException {

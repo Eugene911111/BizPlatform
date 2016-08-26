@@ -19,13 +19,10 @@ public class Resources extends AbstractPageObject {
     private final By delete = By.xpath("//button[@class=\"btn btn-green ng-binding\"]");
     private final By editButtonForCreatedResource = By.xpath("//div[@class=\"reser-type ng-scope\"]//div[@class=\"edit-pencil edit-display\"]");
     private final By deleteButtonForCreatedResource = By.xpath("//div[@class=\"buttons-block\"]//button[@class=\"btn ng-binding\"]");
+                                                                                               //button[@class="btn btn-default text-uppercase ng-binding ng-scope"]
     private final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
     private @Getter final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
     public static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
-
-
-
-
 
     public void pressAddButton(By er) throws InterruptedException {
         waiter(er,WebElement::click);

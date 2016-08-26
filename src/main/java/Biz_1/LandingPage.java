@@ -1,16 +1,9 @@
 package Biz_1;
 
-import com.gargoylesoftware.htmlunit.WebAssert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class LandingPage extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
@@ -36,7 +29,6 @@ public class LandingPage extends AbstractPageObject {
                 (ExpectedCondition<Boolean>) d -> !d.findElement(element1).getText().equals(""));
 
         return until ? driver.findElement(element1).getText() : "----";
-
     }
 
     public LandingPage openBizpPlatform() {
@@ -59,12 +51,13 @@ public class LandingPage extends AbstractPageObject {
         waiter(registrationNameField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_NAME_FIELD));
         waiter(registrationEmailField, WebElement::clear);
         waiter(registrationEmailField, c -> c.sendKeys(SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD));
+
+
         waiter(registrationPasswordField,WebElement::clear);
         waiter(registrationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD));
         waiter(registrationConfirmationPasswordField,WebElement::clear);
         waiter(registrationConfirmationPasswordField, c-> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD));
         waiter(tryForFreeButton, WebElement::click);
-
     }
 
     public void openLogInPage() throws InterruptedException {

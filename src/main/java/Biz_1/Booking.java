@@ -1,12 +1,7 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public class Booking extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
@@ -21,13 +16,8 @@ public class Booking extends AbstractPageObject {
     protected final By booking1 = By.xpath("//div[@class=\"content-wrp ng-scope\"]//div[@class=\"client-icon-wrp\"]//label[@class=\"client ng-binding\"]\n");
 
     protected final By bookingWithMadeButton = By.xpath("//label[@class=\"client ng-binding\"]");
-    private final By delete1Button = By.xpath("//button[@class=\"btn btn-default delete text-uppercase ng-binding ng-scope\"]");
+    private final By delete1Button = By.xpath("//button[@class=\"btn btn-default text-uppercase ng-binding ng-scope\"]");
     private final By delete2Button = By.xpath("//div[@class=\"k-widget k-window\"]//button[@class=\"ok btn btn-default text-uppercase ng-binding\"]");
-
-    //не проверенно
-    private final By date = By.xpath("//div[@class=\"main-menu-datepicker\"]//tr[@class=\"ng-scope\"][5]//span[contains(., '26')]");
-    private final By weekButton = By.xpath(".//*[@id='managerApp']/div/ul[2]/li[3]/a");
-
 
     public Booking pressOnBookingField() throws InterruptedException {
         waiter(bookingField, WebElement::click);
@@ -54,22 +44,18 @@ public class Booking extends AbstractPageObject {
         return this;
     }
 
-    // sdfksfjlkj
     public String getText() {
-        // WebElement element = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.xpath(BOOKING)));
         return driver.findElement(booking1).getText();
 
     }
 
     public Booking deleteBooking() throws InterruptedException {
         waiter(bookingWithMadeButton, WebElement::click);
-        waiter(delete1Button, WebElement::click);
+        Thread.sleep(1000);
+        findElementsAndClick(delete1Button);
+       // waiter(delete1Button, WebElement::click);
         waiter(delete2Button, WebElement::click);
         return this;
-    }
-
-    public void pressWeekButton() throws InterruptedException {
-        waiter(weekButton,WebElement::click);
     }
 }
 
