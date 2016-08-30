@@ -2,7 +2,8 @@ package Biz_1;
 
 import lombok.Getter;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Resources extends AbstractPageObject {
  //   public final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
@@ -25,20 +26,20 @@ public class Resources extends AbstractPageObject {
     public static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
 
     public void pressAddButton(By er) throws InterruptedException {
-        waiter(er,WebElement::click);
+        waiter(er,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void selectToCreateNewCategory() throws InterruptedException {
-        waiter(categoryButton, WebElement::click);
+        waiter(categoryButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public Resources enterNewCategoryName(String categoryNameValue) throws InterruptedException {
-        waiter(fieldForCategoryName,c-> c.sendKeys(categoryNameValue));
+        waiter(fieldForCategoryName, c-> c.sendKeys(categoryNameValue), ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
     public void pressSaveButton() throws InterruptedException {
-        waiter(saveButton,WebElement::click);
+        waiter(saveButton,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public String getTextFromCreatedcategory() {
@@ -48,15 +49,15 @@ public class Resources extends AbstractPageObject {
     }
 
     public void pressEditButtonForCategory() throws InterruptedException {
-       waiter(editButtonForCategory,WebElement::click);
+        waiter(editButtonForCategory,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressDeleteCategoryButton() throws InterruptedException {
-        waiter(deleteCategoryButton,WebElement::click);
+        waiter(deleteCategoryButton,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressDelete() throws InterruptedException {
-        waiter(delete,WebElement::click);
+        waiter(delete,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void deleteCreatedCategory() throws InterruptedException {
@@ -67,26 +68,26 @@ public class Resources extends AbstractPageObject {
     }
 
     public void deleteCreatedResource() throws InterruptedException {
-        waiter(createdResource,WebElement::click);
+        waiter(createdResource,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         clickEditButtonForCreatedResource();
         deleteButtonForCreatedResource();
         deleteButton2ForCreatedResource();
     }
 
     public void clickCreatedResource() throws InterruptedException {
-        waiter(createdResource, WebElement::click);
+        waiter(createdResource, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void clickEditButtonForCreatedResource() throws InterruptedException {
-        waiter(editButtonForCreatedResource,WebElement::click);
+        waiter(editButtonForCreatedResource,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void deleteButtonForCreatedResource() throws InterruptedException {
-        waiter(deleteButtonForCreatedResource, WebElement::click);
+        waiter(deleteButtonForCreatedResource, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void deleteButton2ForCreatedResource() throws InterruptedException {
-        waiter(deleteButton2ForCreatedResource, WebElement::click);
+        waiter(deleteButton2ForCreatedResource, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void addNewCategory() throws InterruptedException {
@@ -97,16 +98,16 @@ public class Resources extends AbstractPageObject {
     }
 
     public void selectToCreateNewResource() throws InterruptedException {
-        waiter(resourceButton,WebElement::click);
+        waiter(resourceButton,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public Resources enterNewResourceName(String categoryNameValue) throws InterruptedException {
-        waiter(fieldForResourceName,c-> c.sendKeys(categoryNameValue));
+        waiter(fieldForResourceName, c-> c.sendKeys(categoryNameValue), ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
     public void pressDropDownButtonToSelectCategory() throws InterruptedException {
-        waiter(dropDownButtonToSelectCategory,WebElement::click);
+        waiter(dropDownButtonToSelectCategory,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
            }
 
     public Resources openResources() throws InterruptedException {

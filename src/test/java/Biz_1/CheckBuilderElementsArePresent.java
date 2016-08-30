@@ -12,5 +12,6 @@ public class CheckBuilderElementsArePresent extends AbstractTest {
         logInPage.logIn();
         mobileBuilder.clickMobileBuilder();
         mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
+        mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_SAMPLE);
     }
 }

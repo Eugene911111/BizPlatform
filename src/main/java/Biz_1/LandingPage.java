@@ -3,6 +3,7 @@ package Biz_1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LandingPage extends AbstractPageObject {
@@ -18,7 +19,7 @@ public class LandingPage extends AbstractPageObject {
     private final By registrationConfirmationPasswordField = By.name("ConfirmPassword");
     //<<-----------------------------------String---------------------------------------------->>
     private static final String BIZPLATFORM_MAIN = "http://bizplatform.co/";
-    private static final String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
+    private  String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
     private static final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     protected   final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
@@ -38,26 +39,37 @@ public class LandingPage extends AbstractPageObject {
     }
 
     public void pressLogInButton() throws InterruptedException {
-        waiter(logInButton, WebElement::click);
+        waiter(logInButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+
     }
 
     public void pressRegisterButton() throws InterruptedException {
-        waiter(registerButton, WebElement::click);
+        waiter(registerButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+
     }
 
     public void registerRandomUser() throws InterruptedException {
-        waiter(registrationNameField, WebElement::click);
-        waiter(registrationNameField, WebElement::clear);
-        waiter(registrationNameField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_NAME_FIELD));
-        waiter(registrationEmailField, WebElement::clear);
-        waiter(registrationEmailField, c -> c.sendKeys(SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD));
+        waiter(registrationNameField, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationNameField, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationNameField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_NAME_FIELD), ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationEmailField, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationEmailField, c -> c.sendKeys("test.ncube" + Math.random() +0.1+ "@gmail.com"), ExpectedConditions::elementToBeClickable, 10);
 
 
-        waiter(registrationPasswordField,WebElement::clear);
-        waiter(registrationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD));
-        waiter(registrationConfirmationPasswordField,WebElement::clear);
-        waiter(registrationConfirmationPasswordField, c-> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD));
-        waiter(tryForFreeButton, WebElement::click);
+        waiter(registrationPasswordField,WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationConfirmationPasswordField,WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(registrationConfirmationPasswordField, c-> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
+
+        waiter(tryForFreeButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+
     }
 
     public void openLogInPage() throws InterruptedException {

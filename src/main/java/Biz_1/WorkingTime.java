@@ -2,6 +2,7 @@ package Biz_1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Created by egolub on 8/8/2016.
@@ -22,47 +23,47 @@ public class WorkingTime extends AbstractPageObject {
 
 
     public void pressWorkingTime() throws InterruptedException {
-        waiter(workingTime, WebElement::click);
+        waiter(workingTime, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void deleteWorkingTime() throws InterruptedException {
-        waiter(deleteWorkingTimeButton, WebElement::click);
+        waiter(deleteWorkingTimeButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressSaveChanges() throws InterruptedException {
-        waiter(saveChangingButton, WebElement::click);
+        waiter(saveChangingButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressOnFieldForSettingTime() throws InterruptedException {
-        waiter(fieldForSettingWorkingTime, WebElement::click);
+        waiter(fieldForSettingWorkingTime, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void saveChanges() throws InterruptedException {
         Thread.sleep(2000);
-        waiter(saveButtonn, WebElement::click);
+        waiter(saveButtonn, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     protected void checkElementIsDisplayed(By element) throws InterruptedException {
-        waiter(element, WebElement::isDisplayed);
+        waiter(element, WebElement::isDisplayed, ExpectedConditions::elementToBeClickable, 10);
     }
 
     protected void sendKeysToOpeningTimeHours() throws InterruptedException {
-        waiter(fieldForOpeningTimeHour, WebElement::clear);
+        waiter(fieldForOpeningTimeHour, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
         findElementsAndSendKeys(fieldForOpeningTimeHour1,valueOfSettingTimeHour);
-       // waiter(fieldForOpeningTimeHour1, c -> c.sendKeys(valueOfSettingTimeHour));
+       // waiterElementtoBeClickable(fieldForOpeningTimeHour1, c -> c.sendKeys(valueOfSettingTimeHour));
         //findElementsAndSendKeys(fieldForOpeningTimeHour, valueOfSettingTimeHour);
     }
 
     protected void sendKeysToOpeningTimeMinuts() throws InterruptedException {
-        waiter(fieldForOpeningTimeMinute, WebElement::clear);
+        waiter(fieldForOpeningTimeMinute, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
         findElementsAndSendKeys(fieldForOpeningTimeMinute, VALUE_OF_SETTING_MINUTE);
     }
 
     protected void sendKeysToCloseTimeHours(By element) throws InterruptedException {
-        waiter(element, WebElement::isDisplayed);
+        waiter(element, WebElement::isDisplayed, ExpectedConditions::elementToBeClickable, 10);
     }
 
     protected void sendKeysToCloseTimeMinuts(By element) throws InterruptedException {
-        waiter(element, WebElement::isDisplayed);
+        waiter(element, WebElement::isDisplayed, ExpectedConditions::elementToBeClickable, 10);
     }
 }

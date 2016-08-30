@@ -2,6 +2,9 @@ package Biz_1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.concurrent.TimeUnit;
 
 public class Booking extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
@@ -20,27 +23,27 @@ public class Booking extends AbstractPageObject {
     private final By delete2Button = By.xpath("//div[@class=\"k-widget k-window\"]//button[@class=\"ok btn btn-default text-uppercase ng-binding\"]");
 
     public Booking pressOnBookingField() throws InterruptedException {
-        waiter(bookingField, WebElement::click);
+        waiter(bookingField, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
     public Booking clickOnClientField() throws InterruptedException {
-        waiter(clientNameField, c -> c.sendKeys(CLIENT_NAME));
+        waiter(clientNameField, c -> c.sendKeys(CLIENT_NAME), ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
     public Booking clickOnTelephoneNumberField() throws InterruptedException {
-        waiter(phoneNumberField, c -> c.sendKeys(PHONE_NUMBER));
+        waiter(phoneNumberField, c -> c.sendKeys(PHONE_NUMBER), ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
     public Booking clickOnEmailField() throws InterruptedException {
-        waiter(emailField, c -> c.sendKeys(EMAIL));
+        waiter(emailField, c -> c.sendKeys(EMAIL), ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
     public Booking pressSaveButton() throws InterruptedException {
-        waiter(saveButton, WebElement::click);
+        waiter(saveButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 
@@ -50,11 +53,9 @@ public class Booking extends AbstractPageObject {
     }
 
     public Booking deleteBooking() throws InterruptedException {
-        waiter(bookingWithMadeButton, WebElement::click);
-        Thread.sleep(1000);
-        findElementsAndClick(delete1Button);
-       // waiter(delete1Button, WebElement::click);
-        waiter(delete2Button, WebElement::click);
+        waiter(bookingWithMadeButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
+        waiter(delete1Button, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(delete2Button, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         return this;
     }
 }

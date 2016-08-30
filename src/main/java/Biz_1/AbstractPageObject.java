@@ -2,12 +2,16 @@ package Biz_1;
 
 import lombok.Data;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @Data
 public abstract class AbstractPageObject {
@@ -35,8 +39,8 @@ public abstract class AbstractPageObject {
         driver.findElement(element).isDisplayed();
     }
 
-    protected void waiter(By selector, Consumer<WebElement> consumer) throws InterruptedException {
-        WebElement element = new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(selector));
+    protected void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
+        WebElement element = new WebDriverWait(driver, (int)seconds).until(function.apply(selector));
         consumer.accept(element);
     }
 }

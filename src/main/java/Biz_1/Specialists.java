@@ -2,6 +2,7 @@ package Biz_1;
 
 import lombok.Getter;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Specialists extends AbstractPageObject {
     private final By xxxxx = By.xpath(" ");
@@ -26,51 +27,51 @@ public class Specialists extends AbstractPageObject {
     }
 
    protected void addNewSpecialist() throws InterruptedException {
-        waiter(getAddSpecialistButton(), WebElement::click);
+       waiter(getAddSpecialistButton(), WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     protected void addNewCategory() throws InterruptedException {
-        waiter(getAddCategoryButton(), WebElement::click);
+        waiter(getAddCategoryButton(), WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     protected Specialists enterNewCategoryName(String categoryNameValue) throws InterruptedException {
-        waiter(fieldForCategoryName, c -> c.sendKeys("Max"));
-        waiter(getFieldForCategoryName(),WebElement::sendKeys);
+        waiter(fieldForCategoryName, c -> c.sendKeys("Max"), ExpectedConditions::elementToBeClickable, 10);
+        waiter(getFieldForCategoryName(),WebElement::sendKeys, ExpectedConditions::elementToBeClickable, 10);
         driver.findElement(fieldForCategoryName).sendKeys(categoryNameValue);
         return this;
     }
 
     public void pressSaveButton() throws InterruptedException {
-            waiter(saveButton,WebElement::click);
+        waiter(saveButton,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     public void addSpecislist() throws InterruptedException {
-        waiter(specialistButton,WebElement::click);
+        waiter(specialistButton,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void enterSpecialistName() throws InterruptedException {
-        waiter(specialistName, c -> c.sendKeys("Max"));
+        waiter(specialistName, c -> c.sendKeys("Max"), ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressEditForCategory() throws InterruptedException {
-        waiter(editButtonForCategory,WebElement::click);
+        waiter(editButtonForCategory,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     public void deleteCreatedCategory() throws InterruptedException {
-        waiter(deleteCategoryButton,WebElement::click);
+        waiter(deleteCategoryButton,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     public void pressDelete() throws InterruptedException {
-        waiter(delete,WebElement::click);
+        waiter(delete,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     public void pressCreatedSpecialist() throws InterruptedException {
-        waiter(createdSpecialist, WebElement::click);
+        waiter(createdSpecialist, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
     public void pressEditButtonForCategory() throws InterruptedException {
-        waiter(editButtonForCreatedSpecialist, WebElement::click);
+        waiter(editButtonForCreatedSpecialist, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void deleteCreatedSpecialist() throws InterruptedException {
-        waiter(deleteButtonForCreatedResource,WebElement::click);
+        waiter(deleteButtonForCreatedResource,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressDeleteCpecialist() throws InterruptedException {
-        waiter(deleteButton2ForCreatedResource,WebElement::click);
+        waiter(deleteButton2ForCreatedResource,WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
 
