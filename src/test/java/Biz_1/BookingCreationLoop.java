@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,7 @@ public class BookingCreationLoop {
     protected static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
     public int r = 89;
     public int p = 88;
-    public int count = 0;
+    public int count = 1;
 
 
     @Before
@@ -50,24 +51,17 @@ public class BookingCreationLoop {
     public void bookingcreation() throws InterruptedException {
 
         for (int u = r; u >= p; u--) {
-
             landingPage.openLogInPage();
             logInPage.logIn();
-            //  By xpathSeector = By.xpath("//tr[@class=\"k-middle-row\"][" + Integer.toString(u) + "]/td");
             By xpathSelector = By.xpath("//div[@class=\"k-scheduler-content listen-scroll\"]//tr[" + Integer.toString(u) + "]//td[@class=\"k-today k-nonwork-hour\"]");
-//div[@class="k-scheduler-content listen-scroll"]//tr[89]/td
+            WebDriverWait waitbooking = new WebDriverWait(driver, 10);
+            waitbooking.until(ExpectedConditions.visibilityOfElementLocated(xpathSelector));
             driver.findElement(xpathSelector).click();
-
-            //     booking.pressOnBookingField();
             booking.clickOnClientField().clickOnTelephoneNumberField().clickOnEmailField();
             booking.pressSaveButton();
-
-            //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
-            //String actualClientName = landingPage.getTextFromLocator(booking.booking1);
-            //log.info(actualClientName);
-            // Assert.assertEquals(EXPECTED_CLIENT_NAME, actualClientName);
             log.debug("---------Booking # " + (count++) + " is made-------------- ");
             booking.checkElementIsNotDisplayed(booking.saveButton);
+            Thread.sleep(1500); //do not delete, it may not delete the booking
         }
     }
 
@@ -78,8 +72,7 @@ public class BookingCreationLoop {
                 landingPage.openLogInPage();
                 logInPage.logIn();
                 booking.deleteBooking();
-                //Thread.sleep(3000);
-                System.out.println("Booking # "+ (count--) + " deleted");
+                System.out.println("Booking # " + (count++) + " deleted");
             } catch (Exception e) {
                 return;
             }

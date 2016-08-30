@@ -44,7 +44,7 @@ public abstract class AbstractPageObject {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
-    protected void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
+    public void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
         WebElement element = new WebDriverWait(driver, (int)seconds).until(function.apply(selector));
         consumer.accept(element);
     }

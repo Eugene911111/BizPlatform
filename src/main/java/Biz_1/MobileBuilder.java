@@ -24,7 +24,7 @@ public class MobileBuilder extends AbstractPageObject {
     public final String screenshotName = "D:\\screenshot\\mobileBuilder\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
 
     public void clickMobileBuilder() throws InterruptedException {
-        waiter(mobileAppButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(mobileAppButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
     }
 
     public MobileBuilder refreshMobileBuilder() throws InterruptedException {

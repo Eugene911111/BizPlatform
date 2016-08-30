@@ -40,7 +40,7 @@ public class Loopp {
 
     @Test
     public void test() throws InterruptedException {
-        for (int i = 1; i <= 120; i++) {
+        for (int i = 1; i <= 8; i++) {
             landingPage.openBizpPlatform();
             landingPage.pressRegisterButton();
             landingPage.registerRandomUser();
