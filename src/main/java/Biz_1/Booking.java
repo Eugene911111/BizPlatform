@@ -53,7 +53,7 @@ public class Booking extends AbstractPageObject {
     }
 
     public Booking deleteBooking() throws InterruptedException {
-        waiter(bookingWithMadeButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(bookingWithMadeButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
         waiter(delete1Button, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         waiter(delete2Button, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
         return this;

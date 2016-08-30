@@ -20,11 +20,11 @@ public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
             mobileBuilder.refreshMobileBuilder();
             try {
                 mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
-                log.error("After " + h + " reloading builder elements are displayed correct" );
+                log.info("After " + h + " reloading builder elements are displayed correct" );
             } catch (Exception e) {
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(screenshot, new File(screenshotName));
-                log.debug("Screenshot of the bug was saved to: " + screenshotName);
+                log.error("Screenshot of the bug was saved to: " + screenshotName);
                 throw new Exception(e);
             }
         }

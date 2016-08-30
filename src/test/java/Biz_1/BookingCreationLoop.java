@@ -60,7 +60,6 @@ public class BookingCreationLoop {
             booking.clickOnClientField().clickOnTelephoneNumberField().clickOnEmailField();
             booking.pressSaveButton();
             log.debug("---------Booking # " + (count++) + " is made-------------- ");
-            booking.checkElementIsNotDisplayed(booking.saveButton);
             Thread.sleep(1500); //do not delete, it may not delete the booking
         }
     }
