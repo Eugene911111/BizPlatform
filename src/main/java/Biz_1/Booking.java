@@ -15,7 +15,7 @@ public class Booking extends AbstractPageObject {
     private static final String PHONE_NUMBER = "+380957211613";
     private final By emailField = By.name("email");
     private static final String EMAIL = "golubeugene91155@gmail.com";
-    private final By saveButton = By.xpath("//button[@class=\"btn btn-default save text-uppercase ng-scope\"]");
+    protected final By saveButton = By.xpath("//button[@class=\"btn btn-default save text-uppercase ng-scope\"]");
     protected final By booking1 = By.xpath("//div[@class=\"content-wrp ng-scope\"]//div[@class=\"client-icon-wrp\"]//label[@class=\"client ng-binding\"]\n");
 
     protected final By bookingWithMadeButton = By.xpath("//label[@class=\"client ng-binding\"]");
@@ -28,22 +28,22 @@ public class Booking extends AbstractPageObject {
     }
 
     public Booking clickOnClientField() throws InterruptedException {
-        waiter(clientNameField, c -> c.sendKeys(CLIENT_NAME), ExpectedConditions::elementToBeClickable, 10);
+        waiter(clientNameField, c -> c.sendKeys(CLIENT_NAME), ExpectedConditions::presenceOfElementLocated, 10);
         return this;
     }
 
     public Booking clickOnTelephoneNumberField() throws InterruptedException {
-        waiter(phoneNumberField, c -> c.sendKeys(PHONE_NUMBER), ExpectedConditions::elementToBeClickable, 10);
+        waiter(phoneNumberField, c -> c.sendKeys(PHONE_NUMBER), ExpectedConditions::presenceOfElementLocated, 10);
         return this;
     }
 
     public Booking clickOnEmailField() throws InterruptedException {
-        waiter(emailField, c -> c.sendKeys(EMAIL), ExpectedConditions::elementToBeClickable, 10);
+        waiter(emailField, c -> c.sendKeys(EMAIL), ExpectedConditions::presenceOfElementLocated, 10);
         return this;
     }
 
     public Booking pressSaveButton() throws InterruptedException {
-        waiter(saveButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(saveButton, WebElement::click, ExpectedConditions::elementToBeClickable, 15);
         return this;
     }
 
@@ -53,9 +53,9 @@ public class Booking extends AbstractPageObject {
     }
 
     public Booking deleteBooking() throws InterruptedException {
-        waiter(bookingWithMadeButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
+        waiter(bookingWithMadeButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         waiter(delete1Button, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-        waiter(delete2Button, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(delete2Button, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
         return this;
     }
 }

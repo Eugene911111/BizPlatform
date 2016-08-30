@@ -6,7 +6,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 
-    public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
+public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
     private final String screenshotName = "D:\\screenshot\\mobileBuilder\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
 
     @org.junit.Test
@@ -15,14 +15,16 @@ import java.io.File;
         logInPage.logIn();
         mobileBuilder.clickMobileBuilder();
         mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
-        mobileBuilder.refreshMobileBuilder();
-        try {
-            mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
-        } catch (Exception e) {
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshot, new File(screenshotName));
-            log.error("Screenshot of the bug was saved to: " + screenshotName);
-            throw new Exception(e);
+        for (int h = 1; h <= 5; h++) {
+            mobileBuilder.refreshMobileBuilder();
+            try {
+                mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
+            } catch (Exception e) {
+                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(screenshot, new File(screenshotName));
+                log.error("Screenshot of the bug was saved to: " + screenshotName);
+                throw new Exception(e);
+            }
         }
     }
 }

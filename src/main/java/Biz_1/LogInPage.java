@@ -40,8 +40,10 @@ public class LogInPage extends AbstractPageObject {
 //    }
 
     public void logIn() throws InterruptedException {
-        waiter(emailLogInField, c -> c.sendKeys(SEND_KEYS_TO_EMAIL_FIELD), ExpectedConditions::elementToBeClickable, 10);
+        try {
+        waiter(emailLogInField, c -> c.sendKeys(SEND_KEYS_TO_EMAIL_FIELD), ExpectedConditions::presenceOfElementLocated, 10);
         waiter(passLogInField, c -> c.sendKeys(SEND_KEYS_TO_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
-        waiter(authoriseButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(authoriseButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);}
+        catch (Exception e) {return;}
     }
 }

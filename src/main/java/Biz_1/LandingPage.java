@@ -19,10 +19,10 @@ public class LandingPage extends AbstractPageObject {
     private final By registrationConfirmationPasswordField = By.name("ConfirmPassword");
     //<<-----------------------------------String---------------------------------------------->>
     private static final String BIZPLATFORM_MAIN = "http://bizplatform.co/";
-    private  String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
+    private String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
     private static final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
-    protected   final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
+    protected final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
 
     public String getTextFromLocator(By element1) throws InterruptedException {
         WebDriverWait element = new WebDriverWait(driver, 10);
@@ -39,7 +39,7 @@ public class LandingPage extends AbstractPageObject {
     }
 
     public void pressLogInButton() throws InterruptedException {
-        waiter(logInButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(logInButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
 
     }
 
@@ -57,16 +57,16 @@ public class LandingPage extends AbstractPageObject {
 
         waiter(registrationEmailField, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
 
-        waiter(registrationEmailField, c -> c.sendKeys("test.ncube" + Math.random() +0.1+ "@gmail.com"), ExpectedConditions::elementToBeClickable, 10);
+        waiter(registrationEmailField, c -> c.sendKeys("test.ncube" + Math.random() + 0.1 + "@gmail.com"), ExpectedConditions::elementToBeClickable, 10);
 
 
-        waiter(registrationPasswordField,WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
+        waiter(registrationPasswordField, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
 
         waiter(registrationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
 
-        waiter(registrationConfirmationPasswordField,WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
+        waiter(registrationConfirmationPasswordField, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
 
-        waiter(registrationConfirmationPasswordField, c-> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
+        waiter(registrationConfirmationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
 
         waiter(tryForFreeButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
 
@@ -75,10 +75,6 @@ public class LandingPage extends AbstractPageObject {
     public void openLogInPage() throws InterruptedException {
         openBizpPlatform().pressLogInButton();
     }
-
-
-
-
 
 
 }
