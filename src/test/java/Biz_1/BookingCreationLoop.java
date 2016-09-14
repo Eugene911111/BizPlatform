@@ -26,9 +26,10 @@ public class BookingCreationLoop {
     protected Specialists specialists;
     protected WorkingTime workingTime;
     protected static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
-    public int r = 89;
-    public int p = 88;
-    public int count = 1;
+    protected int r = 89;
+    protected int delta = 3; // change the number of bookings (delta-1)
+    protected int p = r - delta;
+    protected int count = 1;
 
 
     @Before

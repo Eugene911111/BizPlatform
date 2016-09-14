@@ -18,6 +18,9 @@ public class MakingBooking extends AbstractTest {
         booking.pressOnBookingField();
         booking.clickOnClientField().clickOnTelephoneNumberField().clickOnEmailField();
         booking.pressSaveButton();
+        Thread.sleep(3500);
+        booking.checkElementIsDisplayed(booking.bookingWithMadeButton);
+
 
         //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
         //String actualClientName = landingPage.getTextFromLocator(booking.booking1);
@@ -32,9 +35,10 @@ public class MakingBooking extends AbstractTest {
         landingPage.openLogInPage();
         logInPage.logIn();
         booking.deleteBooking();
-
+        booking.checkElementIsNotDisplayed(booking.delete1Button);
     }
 }
+
 
 
 

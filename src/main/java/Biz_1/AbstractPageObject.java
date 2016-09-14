@@ -35,13 +35,14 @@ public abstract class AbstractPageObject {
         driver.findElement(element).sendKeys(sendKeys);
     }
 
-    protected void checkElementIsDisplayed(By element) throws InterruptedException {
-        driver.findElement(element).isDisplayed();
+    public void checkElementIsDisplayed(By element) throws InterruptedException {
+        WebDriverWait wait1 = new WebDriverWait(driver, 15);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    protected void checkElementIsNotDisplayed(By element) throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
+    public void checkElementIsNotDisplayed(By element) throws InterruptedException {
+        WebDriverWait wait1 = new WebDriverWait(driver, 15);
+        wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
     public void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {

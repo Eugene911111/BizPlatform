@@ -12,8 +12,7 @@ public class NewUserRegistration extends AbstractTest {
         String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);
         String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";
         Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
-        System.out.println("---------New user registration test passed successfully-------------- ");
-
+        log.info("---------New user registration test passed successfully-------------- ");
     }
 
 }

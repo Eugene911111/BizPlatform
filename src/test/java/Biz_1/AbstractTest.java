@@ -1,12 +1,21 @@
 package Biz_1;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,33 +31,45 @@ public abstract class AbstractTest {
     protected GlobalSettings globalSettings;
     protected Specialists specialists;
     protected WorkingTime workingTime;
+    protected PromoteOnSite promoteOnSite;
     protected static ChromeDriverService service;
+    protected Catalogue catalogue;
+    protected Offers offers;
     protected static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\egolub\\IdeaProjects\\BizTests\\driver\\chromedriver.exe";
+    String driverNAme = "firefox";
 
     protected static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
     Date date = new Date();
     Calendar cal = Calendar.getInstance();
-    SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh.mm.ss a ");
-    public final String randScreenshotName = "D:\\screenshot\\" + ft.format(date)+ getClass() + "Screenshot.jpg\\";
-    //----FOR CHROME
-//    @BeforeClass
-//    public static void createAndStartService() throws IOException {
-//        service = new ChromeDriverService.Builder()
-//                .usingDriverExecutable(new File(PATH_TO_CHROMEDRIVER_EXE))
-//                .usingAnyFreePort()
-//                .build();
-//        service.start();
-//    }
-//
-//    @AfterClass
-//    public static void createAndStopService() {
-//        service.stop();
-//    }
+    SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a ");
+    public final String randScreenshotName = "D:\\screenshot\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
 
+    //----FOR CHROME
+    @BeforeClass
+    public static void createAndStartService() throws IOException {
+        service = new ChromeDriverService.Builder()
+                .usingDriverExecutable(new File(PATH_TO_CHROMEDRIVER_EXE))
+                .usingAnyFreePort()
+                .build();
+        service.start();
+    }
+
+
+    @AfterClass
+    public static void createAndStopService() {
+        service.stop();
+    }
 
     @Before
     public void precondition() {
-        driver = new FirefoxDriver();
+        if (driverNAme == "chrome") {
+            driver = new RemoteWebDriver(service.getUrl(),
+                    DesiredCapabilities.chrome());
+        } else if (driverNAme == "IE") {
+            driver = new InternetExplorerDriver();
+        } else {
+            driver = new FirefoxDriver();
+        }
         (logInPage = new LogInPage()).setDriver(driver);
         (landingPage = new LandingPage()).setDriver(driver);
         (booking = new Booking()).setDriver(driver);
@@ -57,13 +78,14 @@ public abstract class AbstractTest {
         (resources = new Resources()).setDriver(driver);
         (specialists = new Specialists()).setDriver(driver);
         (workingTime = new WorkingTime()).setDriver(driver);
-
+        (promoteOnSite = new PromoteOnSite()).setDriver(driver);
+        (catalogue = new Catalogue()).setDriver(driver);
+        (offers = new Offers()).setDriver(driver);
     }
 
     @After
     public void testShutDown() {
         driver.close();
     }
-
 }
 

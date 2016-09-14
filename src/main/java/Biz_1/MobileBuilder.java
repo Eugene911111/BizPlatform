@@ -22,9 +22,11 @@ public class MobileBuilder extends AbstractPageObject {
     private static final String MOBILE_BUILDER_PAGE = "http://bizplatform.co/Venue/CommandCenter#/builder/home";
     protected final By mobileAppButton = By.xpath("//div[@class=\"panel panel-default\"]//i[@class=\"ion-iphone\"]");
     public final String screenshotName = "D:\\screenshot\\mobileBuilder\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
+    private static final String MOBILE_BUILDER = "http://bizplatform.co/Venue/CommandCenter#/builder/home";
 
     public void clickMobileBuilder() throws InterruptedException {
-        waiter(mobileAppButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
+        driver.get(MOBILE_BUILDER);
+        //waiter(mobileAppButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
     }
 
     public MobileBuilder refreshMobileBuilder() throws InterruptedException {
@@ -35,4 +37,5 @@ public class MobileBuilder extends AbstractPageObject {
     public void imageIsDisplayed(By image) throws InterruptedException {
         waiter(image, WebElement::isEnabled, ExpectedConditions::presenceOfElementLocated, 15);
     }
+
 }

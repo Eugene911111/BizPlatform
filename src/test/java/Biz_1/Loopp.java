@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Loopp {
@@ -47,7 +48,7 @@ public class Loopp {
             String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);
             String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";
             Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
-            System.out.println("---------New user registration test # " + i + " passed successfully-------------- " );
+            System.out.println("--------- New user registration test # " + i + " passed successfully -------------- " );
         }
 
     }

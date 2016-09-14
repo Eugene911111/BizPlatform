@@ -43,7 +43,7 @@ public class WorkingTime extends AbstractPageObject {
         waiter(saveButtonn, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
-    protected void checkElementIsDisplayed(By element) throws InterruptedException {
+    public void checkElementIsDisplayed(By element) throws InterruptedException {
         waiter(element, WebElement::isDisplayed, ExpectedConditions::elementToBeClickable, 10);
     }
 
