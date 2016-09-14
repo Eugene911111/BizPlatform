@@ -17,7 +17,7 @@ import java.net.URL;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CheckListOfBenefits extends AbstractTest implements Constants {
-    private final static int DEFAULT_NUMBER_OF_BENEFITS_IN_LIST = 1;
+    private final static int DEFAULT_NUMBER_OF_BENEFITS_IN_LIST = 7;
 
     @Test
     public void a_checkListOfBenefits() throws InterruptedException, IOException {
