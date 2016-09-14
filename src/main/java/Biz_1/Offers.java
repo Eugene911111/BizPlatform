@@ -21,25 +21,31 @@ public class Offers extends AbstractPageObject {
     protected final By offersInList = By.xpath("//div[@class=\"list item-list draggable-list\"]//div[@class=\"card options draggable-item ng-scope\"]");
 
 
-    public void  openOffers() {
+    public void openOffers() {
         driver.get(OFFERS);
     }
+
     public void pressAddNewOffer() throws InterruptedException {
         waiter(addNewOffer, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     public void sendKeysToFieldForOffersDescription() throws InterruptedException {
         waiter(descriptionFieldForBooking, c -> c.sendKeys(KEYS_TO_OFFERS_DESCRIPTION), ExpectedConditions::presenceOfElementLocated, 10);
     }
+
     public void pressSave() throws InterruptedException {
         waiter(saveButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     protected String getTextFromListOfOffers() throws InterruptedException {
         waiter(addedOffer, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
         return driver.findElement(addedOffer).getText();
     }
+
     public void pressDeleteOffer() throws InterruptedException {
         waiter(deleteButtonForCatalogue, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     public void checkElementIs(By element) throws InterruptedException {
         WebDriverWait wait1 = new WebDriverWait(driver, 15);
         wait1.until(ExpectedConditions.presenceOfElementLocated(element));

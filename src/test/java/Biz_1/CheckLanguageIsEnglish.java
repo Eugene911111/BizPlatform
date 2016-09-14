@@ -12,7 +12,7 @@ public class CheckLanguageIsEnglish extends AbstractTest {
         landingPage.openLogInPage();
         logInPage.logIn();
         globalSettings.openGlobalSettings();
-      //  globalSettings.implicitlyWait(3, TimeUnit.SECONDS);
+        //  globalSettings.implicitlyWait(3, TimeUnit.SECONDS);
         globalSettings.pressLanguageDropDown();
         globalSettings.selectEnglishLanguage();
         globalSettings.pressSaveButton();

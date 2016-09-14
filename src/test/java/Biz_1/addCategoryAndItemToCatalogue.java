@@ -20,8 +20,9 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
         catalogue.clickSaveCategortTitle();
         String actualEmailErrorMessage = catalogue.getTextFromListOfCatalogues();
         String expectedErrorMessage = "TEST CATALOGUE NAME";
-        Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage );
+        Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage);
     }
+
     @org.junit.Test
     public void b_addItemToCatalogue() throws InterruptedException {
         landingPage.openLogInPage();
@@ -32,8 +33,9 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
         catalogue.clickSaveItemTitle();
         String actualEmailErrorMessage = catalogue.getItemNameOfCatalogues();
         String expectedErrorMessage = "Test Item Name";
-        Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage );
+        Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage);
     }
+
     @org.junit.Test
     public void c_deleteItem() throws InterruptedException {
         landingPage.openLogInPage();
@@ -42,8 +44,9 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
         catalogue.pressDeleteItem();
         catalogue.pressContinue();
         catalogue.checkElementIsNotDisplayed(catalogue.deleteItemButton);
-     //   Thread.sleep(5000);
+        //   Thread.sleep(5000);
     }
+
     @org.junit.Test
     public void d_deleteCategory() throws InterruptedException {
         landingPage.openLogInPage();
@@ -53,7 +56,7 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
         catalogue.pressRemoveCategoryButton();
         catalogue.pressContinue();
         catalogue.checkElementIsNotDisplayed(catalogue.editButtonForCatalogue);
-     //   Thread.sleep(3000);
+        //   Thread.sleep(3000);
     }
 
 }

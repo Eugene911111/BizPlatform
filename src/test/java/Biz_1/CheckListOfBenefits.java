@@ -141,9 +141,9 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         int code = connection.getResponseCode();
         Assert.assertEquals(code, 200);
 
-        log.info("PDF file was downloaded with Response Code " + code );
+        log.info("PDF file was downloaded with Response Code " + code);
 
-       Thread.sleep(2000);
+        Thread.sleep(2000);
     }
 
 

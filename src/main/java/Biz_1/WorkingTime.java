@@ -49,8 +49,8 @@ public class WorkingTime extends AbstractPageObject {
 
     protected void sendKeysToOpeningTimeHours() throws InterruptedException {
         waiter(fieldForOpeningTimeHour, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
-        findElementsAndSendKeys(fieldForOpeningTimeHour1,valueOfSettingTimeHour);
-       // waiterElementtoBeClickable(fieldForOpeningTimeHour1, c -> c.sendKeys(valueOfSettingTimeHour));
+        findElementsAndSendKeys(fieldForOpeningTimeHour1, valueOfSettingTimeHour);
+        // waiterElementtoBeClickable(fieldForOpeningTimeHour1, c -> c.sendKeys(valueOfSettingTimeHour));
         //findElementsAndSendKeys(fieldForOpeningTimeHour, valueOfSettingTimeHour);
     }
 

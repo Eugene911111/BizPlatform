@@ -37,28 +37,35 @@ public class PromoteOnSite extends AbstractPageObject {
     public void waitForElementPresent() throws InterruptedException {
         waiter(fieldForListOfBenefits, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
     }
+
     public void waitForAddYourCustomFieldIsPresent() throws InterruptedException {
         waiter(addYourCustomFiel, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
     }
+
     public void clickAddButton() throws InterruptedException {
         waiter(addButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     public void clickProvideAdditionalInformation() throws InterruptedException {
         waiter(additionalInformationButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     public void additionalInformation() throws InterruptedException {
-        findElementsAndSendKeys(fieldForAdditionalInformationButton,TEXT_OF_ADDITIONAL_INFO );
+        findElementsAndSendKeys(fieldForAdditionalInformationButton, TEXT_OF_ADDITIONAL_INFO);
     }
+
     protected String getTextFromPreviewPromoteOnSiteCustomField() throws InterruptedException {
         waiter(additionalInformationInPreview, WebElement::isEnabled, ExpectedConditions::presenceOfElementLocated, 10);
         return driver.findElement(additionalInformationInPreview).getText();
 
 
     }
+
     protected String getTextFromPreviewPromoteOnSiteAdditionInformation() throws InterruptedException {
         waiter(customFieldInPreview, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
         return driver.findElement(customFieldInPreview).getText();
     }
+
     public void clickDownloadButton() throws InterruptedException {
         waiter(downloadButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }

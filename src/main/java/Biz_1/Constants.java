@@ -12,5 +12,4 @@ public interface Constants {
     String MOBILE_BUILDER_IMAGE = ("//div[@class=\"content\"]//following-sibling::*//img [contains (., \"\")]");
 
 
-
 }

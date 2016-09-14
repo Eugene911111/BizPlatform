@@ -12,14 +12,15 @@ public class GlobalSettings extends AbstractPageObject implements Constants {
     }
 
     public void selectRussianLanguage() throws InterruptedException {
-        waiter(xpath(GLOBAL_RUSSIAN_LANGUAGE),WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(xpath(GLOBAL_RUSSIAN_LANGUAGE), WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     public void selectEnglishLanguage() throws InterruptedException {
         waiter(xpath(GLOBAL_ENGLISH_LANGUAGE), WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void pressSaveButton() throws InterruptedException {
-        waiter(xpath(GLOBAL_SAVE_BUTTON),WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+        waiter(xpath(GLOBAL_SAVE_BUTTON), WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public GlobalSettings openGlobalSettings() {

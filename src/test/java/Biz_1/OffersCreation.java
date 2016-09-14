@@ -33,8 +33,8 @@ public class OffersCreation extends AbstractTest {
         offers.openOffers();
         offers.checkElementIs(offers.offersOnPreview);
         int numberOfOffersInList = driver.findElement(By.xpath("//div[@class=\"list item-list draggable-list\"]")).findElements(By.xpath("//div[@class=\"list item-list draggable-list\"]//div[@class=\"card options draggable-item ng-scope\"]")).size();
-//        int numberOfOffersInPreview = driver.findElement(By.xpath("//ion-nav-bar[@class=\"nav-bar-container\"]")).findElements(By.xpath("//div[@class=\"list card offer\"]")).size();
-//        System.out.println(numberOfOffersInPreview);
+        //        int numberOfOffersInPreview = driver.findElement(By.xpath("//ion-nav-bar[@class=\"nav-bar-container\"]")).findElements(By.xpath("//div[@class=\"list card offer\"]")).size();
+        //        System.out.println(numberOfOffersInPreview);
 
         if (numberOfOffersInList == offers.DEFAULT_NUMBER_OF_OFFERS) {
             log.info("Number of Offers in preview and in list is the same and equals " + numberOfOffersInList);

@@ -80,9 +80,11 @@ public class LandingPage extends AbstractPageObject {
     public void openLogInPage() throws InterruptedException {
         openBizpPlatform().pressLogInButton();
     }
+
     public void pressUserButton() throws InterruptedException {
         waiter(userButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
     public void pressLogOutButton() throws InterruptedException {
         waiter(logOutButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }

@@ -46,7 +46,7 @@ public abstract class AbstractPageObject {
     }
 
     public void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
-        WebElement element = new WebDriverWait(driver, (int)seconds).until(function.apply(selector));
+        WebElement element = new WebDriverWait(driver, (int) seconds).until(function.apply(selector));
         consumer.accept(element);
     }
 }
