@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class LogOutTest extends AbstractTest implements Constants {
     @org.junit.Test
-    public void logInTest() throws Exception {
+    public void logOutTest() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
         landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);

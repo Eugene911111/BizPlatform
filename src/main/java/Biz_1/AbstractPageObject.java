@@ -41,7 +41,7 @@ public abstract class AbstractPageObject {
     }
 
     public void checkElementIsNotDisplayed(By element) throws InterruptedException {
-        WebDriverWait wait1 = new WebDriverWait(driver, 15);
+        WebDriverWait wait1 = new WebDriverWait(driver, 20);
         wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 

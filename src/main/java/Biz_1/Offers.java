@@ -45,5 +45,4 @@ public class Offers extends AbstractPageObject {
         wait1.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 
-
 }

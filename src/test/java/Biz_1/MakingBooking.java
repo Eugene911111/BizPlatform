@@ -18,7 +18,6 @@ public class MakingBooking extends AbstractTest {
         booking.pressOnBookingField();
         booking.clickOnClientField().clickOnTelephoneNumberField().clickOnEmailField();
         booking.pressSaveButton();
-        Thread.sleep(3500);
         booking.checkElementIsDisplayed(booking.bookingWithMadeButton);
 
 
@@ -27,7 +26,6 @@ public class MakingBooking extends AbstractTest {
         //log.info(actualClientName);
         // Assert.assertEquals(EXPECTED_CLIENT_NAME, actualClientName);
         log.debug("---------Booking is made-------------- ");
-
     }
 
     @org.junit.Test

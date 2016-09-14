@@ -140,10 +140,12 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         connection.connect();
         int code = connection.getResponseCode();
         Assert.assertEquals(code, 200);
+
         log.info("PDF file was downloaded with Response Code " + code );
 
        Thread.sleep(2000);
     }
+
 
 //private void sendLogIn() throws IOException{
 //    GetMethod getMEthod = new GetMethod("http://bizplatform.co/Account/Login/");
