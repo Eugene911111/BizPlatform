@@ -15,5 +15,4 @@ public class NewUserRegistration extends AbstractTest {
         Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
         log.info("---------New user registration test passed successfully-------------- ");
     }
-
 }
