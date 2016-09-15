@@ -17,7 +17,8 @@ import java.net.URL;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CheckListOfBenefits extends AbstractTest implements Constants {
-    private final static int DEFAULT_NUMBER_OF_BENEFITS_IN_LIST = 7;
+    private final static int DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN = 6;
+    private final static int DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH = 9;
 
     @Test
     public void a_checkListOfBenefits() throws InterruptedException, IOException {
@@ -27,10 +28,10 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.getPromoteOnWebFlyer();
         promoteOnSite.waitForElementPresent();
         int BenefitsCount = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
-        if (BenefitsCount == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST) {
-            log.info("Test passed!! The number of Benefits is " + DEFAULT_NUMBER_OF_BENEFITS_IN_LIST);
+        if (BenefitsCount == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH || BenefitsCount == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
+            log.info("Test passed!! The number of Benefits is " + BenefitsCount);
         } else {
-            log.error("The number of Benefits in list is " + BenefitsCount + ". The number of Benefits should be " + DEFAULT_NUMBER_OF_BENEFITS_IN_LIST);
+            log.error("The number of Benefits in list is " + BenefitsCount + ". The number of Benefits should be " + BenefitsCount);
             throw new InterruptedException();
         }
     }
@@ -43,7 +44,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.getPromoteOnWebFlyer();
         promoteOnSite.waitForElementPresent();
         int BenefitsCount2 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
-        if (BenefitsCount2 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST) {
+        if (BenefitsCount2 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH || BenefitsCount2 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("Test passed!!");
         } else {
             log.error("The number of Benefits in list is " + BenefitsCount2);
@@ -52,7 +53,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.clickResetToDefault();
         promoteOnSite.waitForElementPresent();
         int BenefitsCountAfterResetToDefault = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
-        if (BenefitsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST) {
+        if (BenefitsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH || BenefitsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("After pressing ResetToDefault the numder od Benefits is correct " + BenefitsCountAfterResetToDefault);
         } else {
             log.error("The number of Benefits in list is " + BenefitsCountAfterResetToDefault);
@@ -69,11 +70,11 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.waitForAddYourCustomFieldIsPresent();
         promoteOnSite.findElementsAndSendKeys(promoteOnSite.addYourCustomFiel, promoteOnSite.newBenefit);
         promoteOnSite.clickAddButton();
-        int BenefitsCount2 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
-        if (BenefitsCount2 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST + 1) {
+        int BenefitsCount4 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
+        if (BenefitsCount4 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH + 1 || BenefitsCount4 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN + 1) {
             log.info("Test passed!! One Benefit was added to the list.");
         } else {
-            log.error("The number of Benefits in list is " + BenefitsCount2);
+            log.error("The number of Benefits in list is " + BenefitsCount4);
             throw new InterruptedException();
         }
         //------------check that custom field is added to preview
@@ -95,7 +96,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.findElementsAndSendKeys(promoteOnSite.addYourCustomFiel, promoteOnSite.newBenefit);
         promoteOnSite.clickAddButton();
         int BenefitsCount3 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
-        if (BenefitsCount3 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST + 1) {
+        if (BenefitsCount3 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH + 1 || BenefitsCount3 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN + 1) {
             log.info("Test passed!! One Benefit was added to the list.");
         } else {
             log.error("The number of Benefits in list is " + BenefitsCount3);
@@ -104,7 +105,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.clickResetToDefault();
         promoteOnSite.waitForElementPresent();
         int recordsCountAfterResetToDefault = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
-        if (recordsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST) {
+        if (recordsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH  || recordsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("After pressing ResetToDefault the numder of Benefits is correct " + recordsCountAfterResetToDefault);
         } else {
             log.error("The number of Benefits in list is " + recordsCountAfterResetToDefault);

@@ -20,9 +20,8 @@ public class Specialists extends AbstractPageObject {
     private
     @Getter
     final By specialistButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@href=\"#/bookings/specialists/new\"]");
-    private
     @Getter
-    final By specialistName = By.xpath("//div[@class=\"input-row\"]//input[@type=\"text\"]");
+    private final By specialistName = By.xpath("//div[@class=\"input-row\"]//input[@type=\"text\"]");
     private final By editButtonForCategory = By.xpath("//span[@class=\"group-name ng-binding ng-scope\"][contains(., 'Specialist')]//following-sibling::*//i[@class=\"fa fa-pencil edit-group-icon\"]");
     private final By deleteCategoryButton = By.xpath("//div[@class=\"panel panel-default panel-open\"][contains(., 'Specialis')]//ul[@class=\"edit-dropdown dropdown-menu\"]//li[3]");
     private final By delete = By.xpath("//button[@class=\"btn btn-green ng-binding\"]");

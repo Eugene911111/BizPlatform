@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Created by egolub on 9/13/2016.
  */
 public class Offers extends AbstractPageObject {
-    private static final String OFFERS = "http://bizplatform.co/Venue/CommandCenter#/builder/offers";
-    private static final String KEYS_TO_OFFERS_DESCRIPTION = "Test Offer";
+    protected static final String OFFERS = "http://bizplatform.co/Venue/CommandCenter#/builder/offers";
+    protected static final String KEYS_TO_OFFERS_DESCRIPTION = "Test Offer";
     protected final By addNewOffer = By.xpath("//div[@class=\"line\"]//button[@class=\"btn btn-green add-offer-btn ng-scope\"]");
     protected final By descriptionFieldForBooking = By.xpath("//div[@class=\"col-sm-12 col-md-12\"]//textarea[@type=\"text\"]");
     protected final By saveButton = By.xpath("//div[@class=\"line\"]//button[@class=\"btn btn-green form-save-btn ng-scope\"]");
@@ -20,30 +20,9 @@ public class Offers extends AbstractPageObject {
     protected final static int DEFAULT_NUMBER_OF_OFFERS = 1;
     protected final By offersInList = By.xpath("//div[@class=\"list item-list draggable-list\"]//div[@class=\"card options draggable-item ng-scope\"]");
 
-
-    public void openOffers() {
-        driver.get(OFFERS);
-    }
-
-    public void pressAddNewOffer() throws InterruptedException {
-        waiter(addNewOffer, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-    }
-
-    public void sendKeysToFieldForOffersDescription() throws InterruptedException {
-        waiter(descriptionFieldForBooking, c -> c.sendKeys(KEYS_TO_OFFERS_DESCRIPTION), ExpectedConditions::presenceOfElementLocated, 10);
-    }
-
-    public void pressSave() throws InterruptedException {
-        waiter(saveButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-    }
-
     protected String getTextFromListOfOffers() throws InterruptedException {
         waiter(addedOffer, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
         return driver.findElement(addedOffer).getText();
-    }
-
-    public void pressDeleteOffer() throws InterruptedException {
-        waiter(deleteButtonForCatalogue, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void checkElementIs(By element) throws InterruptedException {

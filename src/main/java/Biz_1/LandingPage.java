@@ -8,12 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LandingPage extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
-    private final By logInButton = By.xpath("//div[@id=\"wrap\"]//a[@class=\"login\"]");
-    private final By registerButton = By.xpath(".//*[@id='nav']//a[@href=\"#join\"]");
+    protected final By logInButton = By.xpath("//div[@id=\"wrap\"]//a[@class=\"login\"]");
+    protected final By registerButton = By.xpath(".//*[@id='nav']//a[@href=\"#join\"]");
     private final By tryForFreeButton = By.xpath("//button[@ng-click=\"vm.register()\"]");
     private final By bookingButton = By.xpath("//span[contains(., 'Booking')]//following-sibling::span[@class=\"tab-name ng-binding\"]");
     protected final By userButton = By.xpath("//div[@class=\"btn-group dropdown\"]//button[@id=\"single-button\"]");
-    private final By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"command.logout()\"]");
+    protected final By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"command.logout()\"]");
 
 
     //<<-----------------------------------FIELDS---------------------------------------------->>
@@ -23,7 +23,7 @@ public class LandingPage extends AbstractPageObject {
     private final By registrationConfirmationPasswordField = By.name("ConfirmPassword");
 
     //<<-----------------------------------String---------------------------------------------->>
-    private static final String BIZPLATFORM_MAIN = "http://bizplatform.co/";
+    protected static final String BIZPLATFORM_MAIN = "http://bizplatform.co/";
     private String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
     private static final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
@@ -35,22 +35,6 @@ public class LandingPage extends AbstractPageObject {
                 (ExpectedCondition<Boolean>) d -> !d.findElement(element1).getText().equals(""));
 
         return until ? driver.findElement(element1).getText() : "----";
-    }
-
-    public LandingPage openBizpPlatform() {
-        driver.manage().window().maximize();
-        driver.get(BIZPLATFORM_MAIN);
-        return this;
-    }
-
-    public void pressLogInButton() throws InterruptedException {
-        waiter(logInButton, WebElement::click, ExpectedConditions::presenceOfElementLocated, 10);
-
-    }
-
-    public void pressRegisterButton() throws InterruptedException {
-        waiter(registerButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-
     }
 
     public void registerRandomUser() throws InterruptedException {
@@ -74,19 +58,10 @@ public class LandingPage extends AbstractPageObject {
         waiter(registrationConfirmationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
 
         waiter(tryForFreeButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-
     }
 
     public void openLogInPage() throws InterruptedException {
-        openBizpPlatform().pressLogInButton();
+        openUrl(BIZPLATFORM_MAIN);
+        waitForElementIsPressentAndClick(logInButton);
     }
-
-    public void pressUserButton() throws InterruptedException {
-        waiter(userButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-    }
-
-    public void pressLogOutButton() throws InterruptedException {
-        waiter(logOutButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-    }
-
 }

@@ -15,11 +15,12 @@ public class MakingBooking extends AbstractTest {
     public void bookingCreation() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        booking.pressOnBookingField();
-        booking.clickOnClientField().clickOnTelephoneNumberField().clickOnEmailField();
-        booking.pressSaveButton();
+        booking.waitForElementIsClickableAndClick(booking.bookingField);
+        booking.sendKeysToElementWhenElementIsClickable(booking.clientNameField, booking.CLIENT_NAME);
+        booking.sendKeysToElementWhenElementIsClickable(booking.phoneNumberField, booking.PHONE_NUMBER);
+        booking.sendKeysToElementWhenElementIsClickable(booking.emailField, booking.EMAIL);
+        booking.waitForElementIsClickableAndClick(booking.saveButton);
         booking.checkElementIsDisplayed(booking.bookingWithMadeButton);
-
 
         //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
         //String actualClientName = landingPage.getTextFromLocator(booking.booking1);

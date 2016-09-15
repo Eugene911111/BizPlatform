@@ -14,10 +14,10 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
     public void a_addCategoryToCatalogue() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        catalogue.openCatalogue();
-        catalogue.pressAddNewCategory();
-        catalogue.sendKeysToFieldForCatalogueTitle();
-        catalogue.clickSaveCategortTitle();
+        catalogue.openUrl(catalogue.CATALOGUE);
+        catalogue.waitForElementIsClickableAndClick(catalogue.addNewCategory);
+        catalogue.sendKeysToElementWhenElementIsPresent(catalogue.fieldForCatalogueTitle, catalogue.KEYS_TO_CATALOGUE_TITLE);
+        catalogue.waitForElementIsClickableAndClick(catalogue.saveCategoryTitleButton);
         String actualEmailErrorMessage = catalogue.getTextFromListOfCatalogues();
         String expectedErrorMessage = "TEST CATALOGUE NAME";
         Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage);
@@ -27,10 +27,10 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
     public void b_addItemToCatalogue() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        catalogue.openCatalogue();
-        catalogue.pressAddNewItem();
-        catalogue.sendKeysToFieldForItemTitle();
-        catalogue.clickSaveItemTitle();
+        catalogue.openUrl(catalogue.CATALOGUE);
+        catalogue.waitForElementIsClickableAndClick(catalogue.addNewItem);
+        catalogue.sendKeysToElementWhenElementIsPresent(catalogue.fieldForItemTitle, catalogue.KEYS_TO_ITEM_TITLE);
+        catalogue.waitForElementIsClickableAndClick(catalogue.saveItemTitleButton);
         String actualEmailErrorMessage = catalogue.getItemNameOfCatalogues();
         String expectedErrorMessage = "Test Item Name";
         Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage);
@@ -40,9 +40,9 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
     public void c_deleteItem() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        catalogue.openCatalogue();
-        catalogue.pressDeleteItem();
-        catalogue.pressContinue();
+        catalogue.openUrl(catalogue.CATALOGUE);
+        catalogue.waitForElementIsClickableAndClick(catalogue.deleteItemButton);
+        catalogue.waitForElementIsClickableAndClick(catalogue.continueButton);
         catalogue.checkElementIsNotDisplayed(catalogue.deleteItemButton);
         //   Thread.sleep(5000);
     }
@@ -51,10 +51,10 @@ public class addCategoryAndItemToCatalogue extends AbstractTest {
     public void d_deleteCategory() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        catalogue.openCatalogue();
-        catalogue.pressEditForCategory();
-        catalogue.pressRemoveCategoryButton();
-        catalogue.pressContinue();
+        catalogue.openUrl(catalogue.CATALOGUE);;
+        catalogue.waitForElementIsPressentAndClick(catalogue.editButtonForCatalogue);
+        catalogue.waitForElementIsPressentAndClick(catalogue.removeCategoryButton);
+        catalogue.waitForElementIsPressentAndClick(catalogue.continueButton);
         catalogue.checkElementIsNotDisplayed(catalogue.editButtonForCatalogue);
         //   Thread.sleep(3000);
     }

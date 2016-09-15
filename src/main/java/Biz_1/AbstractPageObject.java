@@ -36,6 +36,8 @@ public abstract class AbstractPageObject {
     }
 
     public void checkElementIsDisplayed(By element) throws InterruptedException {
+        //waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        //check it
         WebDriverWait wait1 = new WebDriverWait(driver, 15);
         wait1.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
@@ -45,9 +47,30 @@ public abstract class AbstractPageObject {
         wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
+
+    public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
+        waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+    }
+    public void waitForElementIsPressentAndClick(By byElement) throws InterruptedException {
+        waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+    }
     public void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
         WebElement element = new WebDriverWait(driver, (int) seconds).until(function.apply(selector));
         consumer.accept(element);
+    }
+    public void sendKeysToElementWhenElementIsClickable(By element, String string) throws InterruptedException {
+        waiter(element, c -> c.sendKeys(string), ExpectedConditions::elementToBeClickable, 10);
+    }
+    public void sendKeysToElementWhenElementIsPresent(By element, String string) throws InterruptedException {
+        waiter(element, c -> c.sendKeys(string), ExpectedConditions::presenceOfElementLocated, 10);
+    }
+    public void openUrl(String url) {
+        driver.manage().window().maximize();
+        driver.get(url);
+    }
+    public AbstractPageObject refreshPage() throws InterruptedException {
+        driver.navigate().refresh();
+        return this;
     }
 }
 

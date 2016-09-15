@@ -6,8 +6,9 @@ public class NewUserRegistration extends AbstractTest {
 
     @org.junit.Test
     public void newUserRegistration() throws InterruptedException {
-        landingPage.openBizpPlatform();
-        landingPage.pressRegisterButton();
+        landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
+        landingPage.waitForElementIsPressentAndClick(landingPage.registerButton);
+
         landingPage.registerRandomUser();
         String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);
         String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";

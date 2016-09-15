@@ -112,15 +112,4 @@ public class Resources extends AbstractPageObject {
         waiter(dropDownButtonToSelectCategory, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
-    public Resources openResources() throws InterruptedException {
-        driver.navigate().refresh();
-        return this;
-    }
-
-    public Resources refreshResource() throws InterruptedException {
-        driver.navigate().refresh();
-        return this;
-    }
-
-
 }

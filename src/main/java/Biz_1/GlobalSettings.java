@@ -28,11 +28,6 @@ public class GlobalSettings extends AbstractPageObject implements Constants {
         return this;
     }
 
-    public GlobalSettings refreshGlobalSettings() throws InterruptedException {
-        driver.navigate().refresh();
-        return this;
-    }
-
     public String getTextFromGlobalSettingsPageTitle() {
         return driver.findElement(xpath(GLOBAL_PAGE_TITLE)).getText();
     }

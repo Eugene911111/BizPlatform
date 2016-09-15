@@ -42,14 +42,13 @@ public class Loopp {
     @Test
     public void test() throws InterruptedException {
         for (int i = 1; i <= 8; i++) {
-            landingPage.openBizpPlatform();
-            landingPage.pressRegisterButton();
+            landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
+            landingPage.waitForElementIsPressentAndClick(landingPage.registerButton);
             landingPage.registerRandomUser();
             String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);
             String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";
             Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
             System.out.println("--------- New user registration test # " + i + " passed successfully -------------- ");
         }
-
     }
 }

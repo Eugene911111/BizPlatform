@@ -15,10 +15,14 @@ public class OffersCreation extends AbstractTest {
     public void a_addOffer() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        offers.openOffers();
-        offers.pressAddNewOffer();
-        offers.sendKeysToFieldForOffersDescription();
-        offers.pressSave();
+        offers.openUrl(offers.OFFERS);
+        offers.waitForElementIsClickableAndClick(offers.addNewOffer);
+//        Thread.sleep(2000);
+        offers.waitForElementIsClickableAndClick(offers.addNewOffer);
+//        Thread.sleep(2000);
+        offers.sendKeysToElementWhenElementIsPresent(offers.descriptionFieldForBooking, offers.KEYS_TO_OFFERS_DESCRIPTION);
+        Thread.sleep(2000);
+        offers.waitForElementIsPressentAndClick(offers.saveButton);
         offers.checkElementIsDisplayed(offers.addedOffer);
         String actualOfferDescription = offers.getTextFromListOfOffers();
         String expectedOfferDescription = "Test Offer";
@@ -30,8 +34,8 @@ public class OffersCreation extends AbstractTest {
     public void b_checkNumberOfOffersInList() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        offers.openOffers();
-        offers.checkElementIs(offers.offersOnPreview);
+        offers.openUrl(offers.OFFERS);
+        offers.checkElementIs(offers.addedOffer);
         int numberOfOffersInList = driver.findElement(By.xpath("//div[@class=\"list item-list draggable-list\"]")).findElements(By.xpath("//div[@class=\"list item-list draggable-list\"]//div[@class=\"card options draggable-item ng-scope\"]")).size();
         //        int numberOfOffersInPreview = driver.findElement(By.xpath("//ion-nav-bar[@class=\"nav-bar-container\"]")).findElements(By.xpath("//div[@class=\"list card offer\"]")).size();
         //        System.out.println(numberOfOffersInPreview);
@@ -48,9 +52,9 @@ public class OffersCreation extends AbstractTest {
     public void c_deleteOffer() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        offers.openOffers();
-        offers.pressDeleteOffer();
-        catalogue.pressContinue();
+        offers.openUrl(offers.OFFERS);
+        offers.waitForElementIsClickableAndClick(offers.deleteButtonForCatalogue);
+        catalogue.waitForElementIsClickableAndClick(catalogue.continueButton);
         offers.checkElementIsNotDisplayed(offers.addedOffer);
     }
 }

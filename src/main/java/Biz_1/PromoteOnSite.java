@@ -12,9 +12,7 @@ import static org.openqa.selenium.By.xpath;
 public class PromoteOnSite extends AbstractPageObject {
     private static final String MROMOTE_ON_SITE_FLYER = "http://bizplatform.co/Venue/CommandCenter#/promote/on-site/flyer";
     private final By resetToDefaultButton = By.xpath("//div[@class=\"content col-xs-9 col-xs-offset-3 ng-scope\"]//a[@class=\"reset ng-binding\"]");
-
     private final By fieldForListOfBenefits = By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]");
-
     protected final By addYourCustomFiel = By.xpath("//div[@class=\"content col-xs-9 col-xs-offset-3 ng-scope\"]//input[@name=\"feature\"]");
     protected String newBenefit = "test custom field";
     private final By addButton = By.xpath("//div[@class=\"content col-xs-9 col-xs-offset-3 ng-scope\"]//div[@class=\"plus\"]//i[@class=\"ion-plus\"]");
@@ -57,8 +55,6 @@ public class PromoteOnSite extends AbstractPageObject {
     protected String getTextFromPreviewPromoteOnSiteCustomField() throws InterruptedException {
         waiter(additionalInformationInPreview, WebElement::isEnabled, ExpectedConditions::presenceOfElementLocated, 10);
         return driver.findElement(additionalInformationInPreview).getText();
-
-
     }
 
     protected String getTextFromPreviewPromoteOnSiteAdditionInformation() throws InterruptedException {

@@ -16,7 +16,7 @@ public class CheckLanguageIsRussian extends AbstractTest {
         globalSettings.pressLanguageDropDown();
         globalSettings.selectRussianLanguage();
         globalSettings.pressSaveButton();
-        globalSettings.refreshGlobalSettings();
+        globalSettings.refreshPage();
         String actualTextFromGlobalSettingsPageTitle = globalSettings.getTextFromGlobalSettingsPageTitle();
         String expectedTextFromGlobalSettingsPageTitle = "ГЛОБАЛЬНЫЕ НАСТРОЙКИ";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);

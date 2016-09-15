@@ -45,7 +45,7 @@ public class LogInPage extends AbstractPageObject {
             waiter(passLogInField, c -> c.sendKeys(SEND_KEYS_TO_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
             waiter(authoriseButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         } catch (Exception e) {
-            return;
+            return ;
         }
     }
 }

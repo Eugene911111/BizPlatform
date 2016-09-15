@@ -14,10 +14,10 @@ public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
 
         landingPage.openLogInPage();
         logInPage.logIn();
-        mobileBuilder.clickMobileBuilder();
+        mobileBuilder.openUrl(mobileBuilder.MOBILE_BUILDER);
         mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
         for (int h = 1; h <= 5; h++) {
-            mobileBuilder.refreshMobileBuilder();
+            mobileBuilder.refreshPage();
             try {
                 mobileBuilder.imageIsDisplayed(mobileBuilder.MOBILE_BUILDER_IMAGE);
                 log.info("After " + h + " reloading builder elements are displayed correct");
