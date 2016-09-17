@@ -5,7 +5,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Specialists extends AbstractPageObject {
-    private final By xxxxx = By.xpath(" ");
     public static final String SPECIALISTS_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/specialists";
     private
     @Getter

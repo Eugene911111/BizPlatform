@@ -65,4 +65,6 @@ public class PromoteOnSite extends AbstractPageObject {
     public void clickDownloadButton() throws InterruptedException {
         waiter(downloadButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
+
+
 }

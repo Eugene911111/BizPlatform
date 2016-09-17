@@ -5,14 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static Biz_1.Constants.BOOKING_BUTTON;
 
 public class BookingCreationLoop {
 
@@ -26,9 +23,9 @@ public class BookingCreationLoop {
     protected Specialists specialists;
     protected WorkingTime workingTime;
     protected static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
-    protected int r = 89;
+    protected int rowsNumber = 89;
     protected int delta = 3; // change the number of bookings (delta-1)
-    protected int p = r - delta;
+    protected int p = rowsNumber - delta;
     protected int count = 1;
 
 
@@ -49,9 +46,9 @@ public class BookingCreationLoop {
 
 
     @Test
-    public void bookingcreation() throws InterruptedException {
+    public void bookingCreation() throws InterruptedException {
 
-        for (int u = r; u >= p; u--) {
+        for (int u = rowsNumber; u >= p; u--) {
             landingPage.openLogInPage();
             logInPage.logIn();
             By xpathSelector = By.xpath("//div[@class=\"k-scheduler-content listen-scroll\"]//tr[" + Integer.toString(u) + "]//td[@class=\"k-today k-nonwork-hour\"]");
@@ -69,7 +66,7 @@ public class BookingCreationLoop {
 
     @Test
     public void bookisdngDelete() throws InterruptedException {
-        for (int u = r; u >= p; u--) {
+        for (int u = rowsNumber; u >= p; u--) {
             try {
                 landingPage.openLogInPage();
                 logInPage.logIn();

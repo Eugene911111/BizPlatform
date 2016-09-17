@@ -8,7 +8,7 @@ import org.junit.runners.MethodSorters;
  * Created by egolub on 9/12/2016.
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class addCategoryAndItemToCatalogue extends AbstractTest {
+public class AddCategoryAndItemToCatalogue extends AbstractTest {
 
     @org.junit.Test
     public void a_addCategoryToCatalogue() throws InterruptedException {

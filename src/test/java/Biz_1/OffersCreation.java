@@ -18,11 +18,9 @@ public class OffersCreation extends AbstractTest {
         offers.openUrl(offers.OFFERS);
         offers.waitForElementIsClickableAndClick(offers.addNewOffer);
 //        Thread.sleep(2000);
-        offers.waitForElementIsClickableAndClick(offers.addNewOffer);
-//        Thread.sleep(2000);
         offers.sendKeysToElementWhenElementIsPresent(offers.descriptionFieldForBooking, offers.KEYS_TO_OFFERS_DESCRIPTION);
         Thread.sleep(2000);
-        offers.waitForElementIsPressentAndClick(offers.saveButton);
+        offers.waitForElementIsClickableAndClick(offers.saveButton);
         offers.checkElementIsDisplayed(offers.addedOffer);
         String actualOfferDescription = offers.getTextFromListOfOffers();
         String expectedOfferDescription = "Test Offer";

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
+import java.util.List;
 
 public class LogInTest extends AbstractTest implements Constants {
     @org.junit.Test
@@ -12,7 +13,6 @@ public class LogInTest extends AbstractTest implements Constants {
         landingPage.openLogInPage();
         logInPage.logIn();
         landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        //landingPage.checkElementIsDisplayed(By.xpath(BOOKING_BUTTON));
     }
 }
 

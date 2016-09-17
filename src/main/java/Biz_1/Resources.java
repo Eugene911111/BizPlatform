@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Resources extends AbstractPageObject {
-    //   public final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
     private final By categoryButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@class=\"ng-binding ng-scope\"][@href=\"#/bookings/resources/newGroup\"]");
     private final By resourceButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@class=\"ng-binding ng-scope\"][@href=\"#/bookings/resources/new\"]");
     private final By fieldForResourceName = By.xpath("//div[@class=\"input-row\"]//input[@type=\"text\"]");
@@ -20,12 +19,11 @@ public class Resources extends AbstractPageObject {
     private final By delete = By.xpath("//button[@class=\"btn btn-green ng-binding\"]");
     private final By editButtonForCreatedResource = By.xpath("//div[@class=\"reser-type ng-scope\"]//div[@class=\"edit-pencil edit-display\"]");
     private final By deleteButtonForCreatedResource = By.xpath("//div[@class=\"buttons-block\"]//button[@class=\"btn ng-binding\"]");
-    //button[@class="btn btn-default text-uppercase ng-binding ng-scope"]
     private final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
     private
     @Getter
     final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
-    public static final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
+    public final String RESOURSES_PAGE = "http://bizplatform.co/Venue/CommandCenter#/bookings/resources";
 
     public void pressAddButton(By er) throws InterruptedException {
         waiter(er, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
@@ -35,9 +33,8 @@ public class Resources extends AbstractPageObject {
         waiter(categoryButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
-    public Resources enterNewCategoryName(String categoryNameValue) throws InterruptedException {
+    public void enterNewCategoryName(String categoryNameValue) throws InterruptedException {
         waiter(fieldForCategoryName, c -> c.sendKeys(categoryNameValue), ExpectedConditions::elementToBeClickable, 10);
-        return this;
     }
 
     public void pressSaveButton() throws InterruptedException {
@@ -45,7 +42,6 @@ public class Resources extends AbstractPageObject {
     }
 
     public String getTextFromCreatedcategory() {
-
         return driver.findElement(By.xpath(CREATED_CATEGORY_IN_LIST)).getText();
 
     }
@@ -63,7 +59,6 @@ public class Resources extends AbstractPageObject {
     }
 
     public void deleteCreatedCategory() throws InterruptedException {
-
         pressEditButtonForCategory();
         pressDeleteCategoryButton();
         pressDelete();
@@ -74,10 +69,6 @@ public class Resources extends AbstractPageObject {
         clickEditButtonForCreatedResource();
         deleteButtonForCreatedResource();
         deleteButton2ForCreatedResource();
-    }
-
-    public void clickCreatedResource() throws InterruptedException {
-        waiter(createdResource, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
     public void clickEditButtonForCreatedResource() throws InterruptedException {
@@ -103,9 +94,8 @@ public class Resources extends AbstractPageObject {
         waiter(resourceButton, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
 
-    public Resources enterNewResourceName(String categoryNameValue) throws InterruptedException {
+    public void enterNewResourceName(String categoryNameValue) throws InterruptedException {
         waiter(fieldForResourceName, c -> c.sendKeys(categoryNameValue), ExpectedConditions::elementToBeClickable, 10);
-        return this;
     }
 
     public void pressDropDownButtonToSelectCategory() throws InterruptedException {

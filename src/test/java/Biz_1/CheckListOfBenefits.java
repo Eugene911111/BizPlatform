@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CheckListOfBenefits extends AbstractTest implements Constants {
@@ -141,10 +143,8 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         connection.connect();
         int code = connection.getResponseCode();
         Assert.assertEquals(code, 200);
-
         log.info("PDF file was downloaded with Response Code " + code);
-
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
 
@@ -153,7 +153,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
 //    getMEthod.addRequestHeader("Email", "golubeugene91155@gmail.com");
 //    getMEthod.addRequestHeader("Password", "111111");
 //    Http
-//    HttpConnection connection = new HttpConnection("bizplatform.co", 80);
+//    HttpConnection connection = new HttpConnection("bizplatform.co", 80);SessionId=efxqma50uvl3tbsxqzos4nxk
 //    getMEthod.execute(new HttpState(), connection);
 //
 //}

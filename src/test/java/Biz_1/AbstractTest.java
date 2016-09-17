@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -27,7 +28,7 @@ import java.util.Date;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class AbstractTest implements Constants{
+public abstract class AbstractTest implements Constants {
 
     protected WebDriver driver;
     protected LandingPage landingPage;
@@ -45,7 +46,7 @@ public abstract class AbstractTest implements Constants{
     protected static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\egolub\\IdeaProjects\\BizTests\\driver\\chromedriver.exe";
     String driverNAme = "firefox";
 
-    protected static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
     Date date = new Date();
     Calendar cal = Calendar.getInstance();
     SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a ");
@@ -75,7 +76,26 @@ public abstract class AbstractTest implements Constants{
         } else if (driverNAme == "IE") {
             driver = new InternetExplorerDriver();
         } else {
-            driver = new FirefoxDriver();
+            //Create object of FirefoxProfile in built class to access Its properties.
+            FirefoxProfile fprofile = new FirefoxProfile();
+            //Set Location to store files after downloading.
+            fprofile.setPreference("browser.download.dir", "D:\\WebDriverdownloads");
+            fprofile.setPreference("browser.download.folderList", 2);
+            fprofile.setPreference("browser.startup.homepage", "http://bizplatform.co/");
+            //Set Preference to not show file download confirmation dialogue using MIME types Of different file extension types.
+            fprofile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"//MIME types Of MS Excel File.
+                            + "application/pdf;" //MIME types Of PDF File.
+                            + "application/vnd.openxmlformats-officedocument.wordprocessingml.document;" //MIME types Of MS doc File.
+                            + "text/plain;" //MIME types Of text File.
+                            + "text/csv"); //MIME types Of CSV File.
+            fprofile.setPreference("browser.download.manager.showWhenStarting", false);
+            fprofile.setPreference("pdfjs.disabled", true);
+            //Pass fprofile parameter In webdriver to use preferences to download file.
+            driver = new FirefoxDriver(fprofile);
+
+
+            //  driver = new FirefoxDriver();
         }
         (logInPage = new LogInPage()).setDriver(driver);
         (landingPage = new LandingPage()).setDriver(driver);
