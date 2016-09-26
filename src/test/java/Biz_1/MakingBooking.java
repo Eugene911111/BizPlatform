@@ -1,5 +1,5 @@
 package Biz_1;
-
+//Opennig time should be specified from 00.00-23.59
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
