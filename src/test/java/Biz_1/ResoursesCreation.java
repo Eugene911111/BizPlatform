@@ -27,11 +27,11 @@ public class ResoursesCreation extends AbstractTest {
         landingPage.openLogInPage();
         logInPage.logIn();
         driver.get(RESOURSES_PAGE);
-        resources.pressAddButton(resources.getAddResourceButton());
-        resources.selectToCreateNewResource();
-        resources.enterNewResourceName("NEW TEST RESOURCE");
-        resources.pressDropDownButtonToSelectCategory();
-        resources.pressSaveButton();
+        resources.waitForElementIsClickableAndClick(resources.getAddResourceButton());
+        resources.waitForElementIsClickableAndClick(resources.resourceButton);
+        resources.sendKeysToElementWhenElementIsClickable(resources.fieldForResourceName,"NEW TEST RESOURCE");
+        resources.waitForElementIsClickableAndClick(resources.dropDownButtonToSelectCategory);
+        resources.waitForElementIsClickableAndClick(resources.saveButton);
     }
 
     @org.junit.Test

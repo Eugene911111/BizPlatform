@@ -11,11 +11,10 @@ public class CheckLanguageIsRussian extends AbstractTest {
 
         landingPage.openLogInPage();
         logInPage.logIn();
-        globalSettings.openGlobalSettings();
-        // globalSettings.implicitlyWait(3, TimeUnit.SECONDS);
-        globalSettings.pressLanguageDropDown();
-        globalSettings.selectRussianLanguage();
-        globalSettings.pressSaveButton();
+        globalSettings.openUrl(GLOBAL_SETTINGS);
+        globalSettings.waitForElementIsClickableAndClick(GLOBAL_LANGUAGE_BUTTON);
+        globalSettings.waitForElementIsClickableAndClick(GLOBAL_RUSSIAN_LANGUAGE);
+        globalSettings.waitForElementIsClickableAndClick(GLOBAL_SAVE_BUTTON);
         globalSettings.refreshPage();
         String actualTextFromGlobalSettingsPageTitle = globalSettings.getTextFromGlobalSettingsPageTitle();
         String expectedTextFromGlobalSettingsPageTitle = "ГЛОБАЛЬНЫЕ НАСТРОЙКИ";

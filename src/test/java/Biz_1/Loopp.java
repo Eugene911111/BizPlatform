@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Loopp {
@@ -43,7 +42,7 @@ public class Loopp {
     public void test() throws InterruptedException {
         for (int i = 1; i <= 8; i++) {
             landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
-            landingPage.waitForElementIsPressentAndClick(landingPage.registerButton);
+            landingPage.waitForElementIsPresentAndClick(landingPage.registerButton);
             landingPage.registerRandomUser();
             String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);
             String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";

@@ -21,7 +21,7 @@ public class OffersCreation extends AbstractTest {
         offers.sendKeysToElementWhenElementIsPresent(offers.descriptionFieldForBooking, offers.KEYS_TO_OFFERS_DESCRIPTION);
         Thread.sleep(2000);
         offers.waitForElementIsClickableAndClick(offers.saveButton);
-        offers.checkElementIsDisplayed(offers.addedOffer);
+        offers.waitForElementIsClickableAndClick(offers.addedOffer);
         String actualOfferDescription = offers.getTextFromListOfOffers();
         String expectedOfferDescription = "Test Offer";
         Assert.assertEquals(expectedOfferDescription, actualOfferDescription);
@@ -33,7 +33,7 @@ public class OffersCreation extends AbstractTest {
         landingPage.openLogInPage();
         logInPage.logIn();
         offers.openUrl(offers.OFFERS);
-        offers.checkElementIs(offers.addedOffer);
+        offers.waitForElementIsClickableAndClick(offers.addedOffer);
         int numberOfOffersInList = driver.findElement(By.xpath("//div[@class=\"list item-list draggable-list\"]")).findElements(By.xpath("//div[@class=\"list item-list draggable-list\"]//div[@class=\"card options draggable-item ng-scope\"]")).size();
         //        int numberOfOffersInPreview = driver.findElement(By.xpath("//ion-nav-bar[@class=\"nav-bar-container\"]")).findElements(By.xpath("//div[@class=\"list card offer\"]")).size();
         //        System.out.println(numberOfOffersInPreview);

@@ -11,7 +11,7 @@ public class LogOutTest extends AbstractTest implements Constants {
     public void logOutTest() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
         landingPage.waitForElementIsClickableAndClick(landingPage.userButton);
         landingPage.waitForElementIsClickableAndClick(landingPage.logOutButton);
         try {

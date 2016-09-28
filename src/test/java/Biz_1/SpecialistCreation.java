@@ -18,36 +18,36 @@ public class SpecialistCreation extends AbstractTest implements Constants {
     public void a_categoryCreation() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        specialists.getSpecialistsPage();
-        specialists.addNewSpecialist();
-        specialists.addNewCategory();
+        specialists.openUrl(specialists.SPECIALISTS_PAGE);
+        specialists.waitForElementIsClickableAndClick(specialists.getAddSpecialistButton());
+        specialists.waitForElementIsClickableAndClick(specialists.getAddCategoryButton());
         specialists.enterNewCategoryName("Specialist");
-        specialists.pressSaveButton();
+        specialists.waitForElementIsClickableAndClick(specialists.saveButton);
     }
 
     @org.junit.Test
     public void b_specialistCreation() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        specialists.getSpecialistsPage();
-        specialists.addNewSpecialist();
-        specialists.addSpecislist();
-        specialists.enterSpecialistName();
-        specialists.pressSaveButton();
+        specialists.openUrl(specialists.SPECIALISTS_PAGE);
+        specialists.waitForElementIsClickableAndClick(specialists.getAddSpecialistButton());
+        specialists.waitForElementIsClickableAndClick(specialists.specialistButton);
+        specialists.sendKeysToElementWhenElementIsClickable(specialists.specialistName, "Max");
+        specialists.waitForElementIsClickableAndClick(specialists.saveButton);
     }
 
     @org.junit.Test
     public void c_deleteCreatedSpecialist() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
-        specialists.getSpecialistsPage();
+        specialists.openUrl(specialists.SPECIALISTS_PAGE);
 //        specialists.pressCreatedSpecialist();
 //        specialists.pressEditButtonForCategory();
         // specialists.deleteCreatedSpecialist();
         // specialists.pressDeleteCpecialist();
 
         try {
-            specialists.pressCreatedSpecialist();
+            specialists.waitForElementIsClickableAndClick(specialists.createdSpecialist);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshot, new File(screenshotName));
@@ -55,7 +55,7 @@ public class SpecialistCreation extends AbstractTest implements Constants {
             throw new Exception(e);
         }
         try {
-            specialists.pressEditButtonForCategory();
+            specialists.waitForElementIsClickableAndClick(specialists.editButtonForCreatedSpecialist);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshot, new File(screenshotName));
@@ -63,7 +63,7 @@ public class SpecialistCreation extends AbstractTest implements Constants {
             throw new Exception(e);
         }
         try {
-            specialists.deleteCreatedSpecialist();
+            specialists.waitForElementIsClickableAndClick(specialists.deleteButtonForCreatedResource);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshot, new File(screenshotName));
@@ -71,7 +71,7 @@ public class SpecialistCreation extends AbstractTest implements Constants {
             throw new Exception(e);
         }
         try {
-            specialists.pressDeleteCpecialist();
+            specialists.waitForElementIsClickableAndClick(specialists.deleteButton2ForCreatedResource);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshot, new File(screenshotName));
@@ -85,10 +85,10 @@ public class SpecialistCreation extends AbstractTest implements Constants {
 
         landingPage.openLogInPage();
         logInPage.logIn();
-        specialists.getSpecialistsPage();
-        specialists.pressEditForCategory();
-        specialists.deleteCreatedCategory();
-        specialists.pressDelete();
+        specialists.openUrl(specialists.SPECIALISTS_PAGE);
+        specialists.waitForElementIsClickableAndClick(specialists.editButtonForCategory);
+        specialists.waitForElementIsClickableAndClick(specialists.deleteCategoryButton);
+        specialists.waitForElementIsClickableAndClick(specialists.delete);
 
     }
 

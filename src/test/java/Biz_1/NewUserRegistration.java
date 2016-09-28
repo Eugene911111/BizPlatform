@@ -7,7 +7,7 @@ public class NewUserRegistration extends AbstractTest {
     @org.junit.Test
     public void newUserRegistration() throws InterruptedException {
         landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
-        landingPage.waitForElementIsPressentAndClick(landingPage.registerButton);
+        landingPage.waitForElementIsPresentAndClick(landingPage.registerButton);
 
         landingPage.registerRandomUser();
         String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);

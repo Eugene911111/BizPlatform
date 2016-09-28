@@ -15,7 +15,6 @@ public class LandingPage extends AbstractPageObject {
     protected final By userButton = By.xpath("//div[@class=\"btn-group dropdown\"]//button[@id=\"single-button\"]");
     protected final By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"command.logout()\"]");
 
-
     //<<-----------------------------------FIELDS---------------------------------------------->>
     private final By registrationNameField = By.id("joinName");
     private final By registrationEmailField = By.name("UserEmail");
@@ -48,7 +47,6 @@ public class LandingPage extends AbstractPageObject {
 
         waiter(registrationEmailField, c -> c.sendKeys("test.ncube" + Math.random() + 0.1 + "@gmail.com"), ExpectedConditions::elementToBeClickable, 10);
 
-
         waiter(registrationPasswordField, WebElement::clear, ExpectedConditions::elementToBeClickable, 10);
 
         waiter(registrationPasswordField, c -> c.sendKeys(SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD), ExpectedConditions::elementToBeClickable, 10);
@@ -62,6 +60,6 @@ public class LandingPage extends AbstractPageObject {
 
     public void openLogInPage() throws InterruptedException {
         openUrl(BIZPLATFORM_MAIN);
-        waitForElementIsPressentAndClick(logInButton);
+        waitForElementIsPresentAndClick(logInButton);
     }
 }

@@ -9,13 +9,13 @@ public class CheckLanguageIsEnglish extends AbstractTest {
 
         landingPage.openLogInPage();
         logInPage.logIn();
-        globalSettings.openGlobalSettings();
+        globalSettings.openUrl(GLOBAL_SETTINGS);
 
 //
-        globalSettings.pressLanguageDropDown();
+        globalSettings.waitForElementIsClickableAndClick(GLOBAL_LANGUAGE_BUTTON);
 //
-        globalSettings.selectEnglishLanguage();
-        globalSettings.pressSaveButton();
+        globalSettings.waitForElementIsClickableAndClick(GLOBAL_ENGLISH_LANGUAGE);
+        globalSettings.waitForElementIsClickableAndClick(GLOBAL_SAVE_BUTTON);
         globalSettings.refreshPage();
         String actualTextFromGlobalSettingsPageTitle = globalSettings.getTextFromGlobalSettingsPageTitle();
         String expectedTextFromGlobalSettingsPageTitle = "GLOBAL SETTINGS";

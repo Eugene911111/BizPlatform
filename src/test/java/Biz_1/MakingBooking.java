@@ -20,7 +20,7 @@ public class MakingBooking extends AbstractTest {
         booking.sendKeysToElementWhenElementIsClickable(booking.phoneNumberField, booking.PHONE_NUMBER);
         booking.sendKeysToElementWhenElementIsClickable(booking.emailField, booking.EMAIL);
         booking.waitForElementIsClickableAndClick(booking.saveButton);
-        booking.checkElementIsDisplayed(booking.bookingWithMadeButton);
+        booking.waitForElementIsClickableAndClick(booking.bookingWithMadeButton);
 
         //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
         //String actualClientName = landingPage.getTextFromLocator(booking.booking1);

@@ -76,7 +76,7 @@ public abstract class AbstractTest implements Constants {
         } else if (driverNAme == "IE") {
             driver = new InternetExplorerDriver();
         } else {
-            //Create object of FirefoxProfile in built class to access Its properties.
+            /*Create object of FirefoxProfile in built class to access Its properties.  */
             FirefoxProfile fprofile = new FirefoxProfile();
             //Set Location to store files after downloading.
             fprofile.setPreference("browser.download.dir", "D:\\WebDriverdownloads");

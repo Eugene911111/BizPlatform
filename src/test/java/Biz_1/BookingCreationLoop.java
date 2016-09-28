@@ -56,9 +56,9 @@ public class BookingCreationLoop {
             waitbooking.until(ExpectedConditions.visibilityOfElementLocated(xpathSelector));
             driver.findElement(xpathSelector).click();
             booking.sendKeysToElementWhenElementIsClickable(booking.clientNameField, booking.CLIENT_NAME);
-            booking.waitForElementIsPressentAndClick(booking.phoneNumberField);
+            booking.waitForElementIsPresentAndClick(booking.phoneNumberField);
             booking.sendKeysToElementWhenElementIsClickable(booking.emailField, booking.EMAIL);
-            booking.waitForElementIsPressentAndClick(booking.saveButton);
+            booking.waitForElementIsPresentAndClick(booking.saveButton);
             log.debug("---------Booking # " + (count++) + " is made-------------- ");
             Thread.sleep(1500); //do not delete, it may not delete the booking
         }

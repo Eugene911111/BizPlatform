@@ -26,9 +26,9 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
     public void a_checkListOfBenefits() throws InterruptedException, IOException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        promoteOnSite.getPromoteOnWebFlyer();
-        promoteOnSite.waitForElementPresent();
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        promoteOnSite.openUrl(promoteOnSite.PROMOTE_ON_SITE_FLYER);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.fieldForListOfBenefits);
         int BenefitsCount = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
         if (BenefitsCount == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH || BenefitsCount == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("Test passed!! The number of Benefits is " + BenefitsCount);
@@ -42,9 +42,9 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
     public void b_checkListOfBenefitsAfterResetToDefault() throws InterruptedException, IOException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        promoteOnSite.getPromoteOnWebFlyer();
-        promoteOnSite.waitForElementPresent();
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        promoteOnSite.openUrl(promoteOnSite.PROMOTE_ON_SITE_FLYER);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.fieldForListOfBenefits);
         int BenefitsCount2 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
         if (BenefitsCount2 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH || BenefitsCount2 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("Test passed!!");
@@ -52,8 +52,8 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
             log.error("The number of Benefits in list is " + BenefitsCount2);
             throw new InterruptedException();
         }
-        promoteOnSite.clickResetToDefault();
-        promoteOnSite.waitForElementPresent();
+        promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.resetToDefaultButton);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.fieldForListOfBenefits);
         int BenefitsCountAfterResetToDefault = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
         if (BenefitsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH || BenefitsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("After pressing ResetToDefault the numder od Benefits is correct " + BenefitsCountAfterResetToDefault);
@@ -67,11 +67,11 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
     public void c_addCustomFields() throws InterruptedException, IOException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        promoteOnSite.getPromoteOnWebFlyer();
-        promoteOnSite.waitForAddYourCustomFieldIsPresent();
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        promoteOnSite.openUrl(promoteOnSite.PROMOTE_ON_SITE_FLYER);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.addYourCustomFiel);
         promoteOnSite.findElementsAndSendKeys(promoteOnSite.addYourCustomFiel, promoteOnSite.newBenefit);
-        promoteOnSite.clickAddButton();
+        promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.addButton);
         int BenefitsCount4 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
         if (BenefitsCount4 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH + 1 || BenefitsCount4 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN + 1) {
             log.info("Test passed!! One Benefit was added to the list.");
@@ -92,11 +92,11 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
     public void d_addCustomFieldsPressResetToDefault() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        promoteOnSite.getPromoteOnWebFlyer();
-        promoteOnSite.waitForAddYourCustomFieldIsPresent();
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        promoteOnSite.openUrl(promoteOnSite.PROMOTE_ON_SITE_FLYER);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.addYourCustomFiel);
         promoteOnSite.findElementsAndSendKeys(promoteOnSite.addYourCustomFiel, promoteOnSite.newBenefit);
-        promoteOnSite.clickAddButton();
+        promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.addButton);
         int BenefitsCount3 = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
         if (BenefitsCount3 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH + 1 || BenefitsCount3 == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN + 1) {
             log.info("Test passed!! One Benefit was added to the list.");
@@ -104,8 +104,8 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
             log.error("The number of Benefits in list is " + BenefitsCount3);
             throw new InterruptedException();
         }
-        promoteOnSite.clickResetToDefault();
-        promoteOnSite.waitForElementPresent();
+        promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.resetToDefaultButton);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.fieldForListOfBenefits);
         int recordsCountAfterResetToDefault = driver.findElement(By.xpath("//ul[@dnd-list=\"flyerCtrl.features\"]")).findElements(By.tagName("li")).size();
         if (recordsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_ENGLISH  || recordsCountAfterResetToDefault == DEFAULT_NUMBER_OF_BENEFITS_IN_LIST_FOR_RUSSIAN) {
             log.info("After pressing ResetToDefault the numder of Benefits is correct " + recordsCountAfterResetToDefault);
@@ -119,11 +119,11 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
     public void e_checkProvideAdditionalMotivationIsDisplayedOnPreview() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        promoteOnSite.getPromoteOnWebFlyer();
-        promoteOnSite.waitForAddYourCustomFieldIsPresent();
-        promoteOnSite.clickProvideAdditionalInformation();
-        promoteOnSite.additionalInformation();
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        promoteOnSite.openUrl(promoteOnSite.PROMOTE_ON_SITE_FLYER);
+        promoteOnSite.waitForElementIsPresentAndClick(promoteOnSite.addYourCustomFiel);
+        promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.additionalInformationButton);
+        promoteOnSite.sendKeysToElementWhenElementIsPresent(promoteOnSite.fieldForAdditionalInformationButton, promoteOnSite.TEXT_OF_ADDITIONAL_INFO);
         // check addition information is added to the preview
         String actualEmailErrorMessage = promoteOnSite.getTextFromPreviewPromoteOnSiteCustomField();
         String expectedErrorMessage = "test additional info";
@@ -134,9 +134,9 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
     public void f_checkPdfIsDownloaded() throws Exception {
         landingPage.openLogInPage();
         logInPage.logIn();
-        landingPage.waiter(By.xpath(BOOKING_BUTTON), WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        promoteOnSite.getPromoteOnWebFlyer();
-        promoteOnSite.clickDownloadButton();
+        landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        promoteOnSite.openUrl(promoteOnSite.PROMOTE_ON_SITE_FLYER);
+        promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.downloadButton);
         URL url = new URL(driver.getCurrentUrl());
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");

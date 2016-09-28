@@ -41,20 +41,22 @@ public abstract class AbstractPageObject {
         WebDriverWait wait1 = new WebDriverWait(driver, 15);
         wait1.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
+    public void imageIsDisplayed(By image) throws InterruptedException {
+        waiter(image, WebElement::isEnabled, ExpectedConditions::presenceOfElementLocated, 15);
+    }
 
     public void checkElementIsNotDisplayed(By element) throws InterruptedException {
         WebDriverWait wait1 = new WebDriverWait(driver, 20);
         wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
 
-
     public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
         waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
-    public void waitForElementIsPressentAndClick(By byElement) throws InterruptedException {
+    public void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
         waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
     }
-    public void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
+    protected void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
         WebElement element = new WebDriverWait(driver, (int) seconds).until(function.apply(selector));
         consumer.accept(element);
     }
