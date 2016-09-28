@@ -4,9 +4,7 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
-/**
- * Created by egolub on 9/12/2016.
- */
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AddCategoryAndItemToCatalogue extends AbstractTest {
 
@@ -51,10 +49,10 @@ public class AddCategoryAndItemToCatalogue extends AbstractTest {
     public void d_deleteCategory() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        catalogue.openUrl(catalogue.CATALOGUE);;
-        catalogue.waitForElementIsPressentAndClick(catalogue.editButtonForCatalogue);
-        catalogue.waitForElementIsPressentAndClick(catalogue.removeCategoryButton);
-        catalogue.waitForElementIsPressentAndClick(catalogue.continueButton);
+        catalogue.openUrl(catalogue.CATALOGUE);
+        catalogue.waitForElementIsPresentAndClick(catalogue.editButtonForCatalogue);
+        catalogue.waitForElementIsPresentAndClick(catalogue.removeCategoryButton);
+        catalogue.waitForElementIsPresentAndClick(catalogue.continueButton);
         catalogue.checkElementIsNotDisplayed(catalogue.editButtonForCatalogue);
         //   Thread.sleep(3000);
     }

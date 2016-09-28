@@ -23,7 +23,6 @@ public class LandingPage extends AbstractPageObject {
 
     //<<-----------------------------------String---------------------------------------------->>
     protected static final String BIZPLATFORM_MAIN = "http://bizplatform.co/";
-    private String SEND_RANDOM_KEYS_TO_REGISTRATION_EMAIL_FIELD = "test.ncube" + Math.random() + "@gmail.com";
     private static final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private static final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     protected final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
