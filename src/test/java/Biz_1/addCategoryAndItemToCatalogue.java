@@ -16,7 +16,7 @@ public class AddCategoryAndItemToCatalogue extends AbstractTest {
         catalogue.waitForElementIsClickableAndClick(catalogue.addNewCategory);
         catalogue.sendKeysToElementWhenElementIsPresent(catalogue.fieldForCatalogueTitle, catalogue.KEYS_TO_CATALOGUE_TITLE);
         catalogue.waitForElementIsClickableAndClick(catalogue.saveCategoryTitleButton);
-        String actualEmailErrorMessage = catalogue.getTextFromListOfCatalogues();
+        String actualEmailErrorMessage = catalogue.getTextFromElement(catalogue.addedTestCatalogue);
         String expectedErrorMessage = "TEST CATALOGUE NAME";
         Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage);
     }
@@ -29,7 +29,7 @@ public class AddCategoryAndItemToCatalogue extends AbstractTest {
         catalogue.waitForElementIsClickableAndClick(catalogue.addNewItem);
         catalogue.sendKeysToElementWhenElementIsPresent(catalogue.fieldForItemTitle, catalogue.KEYS_TO_ITEM_TITLE);
         catalogue.waitForElementIsClickableAndClick(catalogue.saveItemTitleButton);
-        String actualEmailErrorMessage = catalogue.getItemNameOfCatalogues();
+        String actualEmailErrorMessage = catalogue.getTextFromElement(catalogue.addedTestItem);
         String expectedErrorMessage = "Test Item Name";
         Assert.assertEquals(expectedErrorMessage, actualEmailErrorMessage);
     }

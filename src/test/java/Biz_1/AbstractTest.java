@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -44,13 +45,20 @@ public abstract class AbstractTest implements Constants {
     protected Catalogue catalogue;
     protected Offers offers;
     protected static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\egolub\\IdeaProjects\\BizTests\\driver\\chromedriver.exe";
-    String driverNAme = "firefox";
+    private String driverName = "firefox";
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
-    Date date = new Date();
-    Calendar cal = Calendar.getInstance();
-    SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a ");
-    public final String randScreenshotName = "D:\\screenshot\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
+    protected final String randScreenshotName;
+
+    public AbstractTest() {
+        SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a ");
+            randScreenshotName = "D:\\screenshot\\" + ft.format(new Date()) + getClass() + "Screenshot.jpg\\";
+    }
+
+    public AbstractTest(String subfolder) {
+        SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a ");
+        randScreenshotName = "D:\\screenshot\\" + subfolder + ft.format(new Date()) + getClass() + "Screenshot.jpg\\";
+    }
 
     //----FOR CHROME
     @BeforeClass
@@ -62,7 +70,6 @@ public abstract class AbstractTest implements Constants {
         service.start();
     }
 
-
     @AfterClass
     public static void createAndStopService() {
         service.stop();
@@ -70,29 +77,29 @@ public abstract class AbstractTest implements Constants {
 
     @Before
     public void precondition() {
-        if (driverNAme == "chrome") {
+        if (driverName == "chrome") {
             driver = new RemoteWebDriver(service.getUrl(),
                     DesiredCapabilities.chrome());
-        } else if (driverNAme == "IE") {
+        } else if (Objects.equals(driverName, "IE")) {
             driver = new InternetExplorerDriver();
         } else {
             /*Create object of FirefoxProfile in built class to access Its properties.  */
-            FirefoxProfile fprofile = new FirefoxProfile();
+            FirefoxProfile profile = new FirefoxProfile();
             //Set Location to store files after downloading.
-            fprofile.setPreference("browser.download.dir", "D:\\WebDriverdownloads");
-            fprofile.setPreference("browser.download.folderList", 2);
-            fprofile.setPreference("browser.startup.homepage", "http://bizplatform.co/");
+            profile.setPreference("browser.download.dir", "D:\\WebDriverdownloads");
+            profile.setPreference("browser.download.folderList", 2);
+            profile.setPreference("browser.startup.homepage", "http://bizplatform.co/");
             //Set Preference to not show file download confirmation dialogue using MIME types Of different file extension types.
-            fprofile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+            profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
                     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"//MIME types Of MS Excel File.
                             + "application/pdf;" //MIME types Of PDF File.
                             + "application/vnd.openxmlformats-officedocument.wordprocessingml.document;" //MIME types Of MS doc File.
                             + "text/plain;" //MIME types Of text File.
                             + "text/csv"); //MIME types Of CSV File.
-            fprofile.setPreference("browser.download.manager.showWhenStarting", false);
-            fprofile.setPreference("pdfjs.disabled", true);
+            profile.setPreference("browser.download.manager.showWhenStarting", false);
+            profile.setPreference("pdfjs.disabled", true);
             //Pass fprofile parameter In webdriver to use preferences to download file.
-            driver = new FirefoxDriver(fprofile);
+            driver = new FirefoxDriver(profile);
 
 
             //  driver = new FirefoxDriver();
@@ -108,6 +115,10 @@ public abstract class AbstractTest implements Constants {
         (promoteOnSite = new PromoteOnSite()).setDriver(driver);
         (catalogue = new Catalogue()).setDriver(driver);
         (offers = new Offers()).setDriver(driver);
+    }
+
+    protected void fuckYou() {
+        System.out.println("fuck you");
     }
 
     @After

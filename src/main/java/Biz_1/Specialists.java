@@ -34,9 +34,8 @@ public class Specialists extends AbstractPageObject {
     protected final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
 
     protected Specialists enterNewCategoryName(String categoryNameValue) throws InterruptedException {
-        waiter(fieldForCategoryName, c -> c.sendKeys("Max"), ExpectedConditions::elementToBeClickable, 10);
-        waiter(getFieldForCategoryName(), WebElement::sendKeys, ExpectedConditions::elementToBeClickable, 10);
-        driver.findElement(fieldForCategoryName).sendKeys(categoryNameValue);
+        sendKeysToElementWhenElementIsClickable(fieldForCategoryName, "Max");
+        sendKeysToElementWhenElementIsClickable(fieldForCategoryName,categoryNameValue );
         return this;
     }
 }

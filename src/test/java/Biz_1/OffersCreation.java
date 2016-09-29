@@ -22,7 +22,7 @@ public class OffersCreation extends AbstractTest {
         Thread.sleep(2000);
         offers.waitForElementIsClickableAndClick(offers.saveButton);
         offers.waitForElementIsClickableAndClick(offers.addedOffer);
-        String actualOfferDescription = offers.getTextFromListOfOffers();
+        String actualOfferDescription = offers.getTextFromElement(offers.addedOffer);
         String expectedOfferDescription = "Test Offer";
         Assert.assertEquals(expectedOfferDescription, actualOfferDescription);
         log.info("Offer is added");

@@ -80,7 +80,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
             throw new InterruptedException();
         }
         //------------check that custom field is added to preview
-        String actualEmailErrorMessage = promoteOnSite.getTextFromPreviewPromoteOnSiteAdditionInformation();
+        String actualEmailErrorMessage = promoteOnSite.getTextFromElement(promoteOnSite.customFieldInPreview);
         String expectedErrorMessage = "test custom field";
         Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
         log.info("It is displayed in preview");
@@ -125,7 +125,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
         promoteOnSite.waitForElementIsClickableAndClick(promoteOnSite.additionalInformationButton);
         promoteOnSite.sendKeysToElementWhenElementIsPresent(promoteOnSite.fieldForAdditionalInformationButton, promoteOnSite.TEXT_OF_ADDITIONAL_INFO);
         // check addition information is added to the preview
-        String actualEmailErrorMessage = promoteOnSite.getTextFromPreviewPromoteOnSiteCustomField();
+        String actualEmailErrorMessage = promoteOnSite.getTextFromElement(promoteOnSite.additionalInformationInPreview);
         String expectedErrorMessage = "test additional info";
         Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
     }

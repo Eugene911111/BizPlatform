@@ -74,5 +74,18 @@ public abstract class AbstractPageObject {
         driver.navigate().refresh();
         return this;
     }
+
+    protected String getTextFromElement(By element) throws InterruptedException {
+        waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        return driver.findElement(element).getText();
+    }
+
+    // Maybe this method for getting text is better
+    public String getTextFromLocator(By element1) throws InterruptedException {
+        WebDriverWait element = new WebDriverWait(driver, 10);
+        Boolean until = element.until(
+                (ExpectedCondition<Boolean>) d -> !d.findElement(element1).getText().equals(""));
+        return until ? driver.findElement(element1).getText() : "----";
+    }
 }
 

@@ -65,7 +65,7 @@ public class BookingCreationLoop {
     }
 
     @Test
-    public void bookisdngDelete() throws InterruptedException {
+    public void bookingsDelete() throws InterruptedException {
         for (int u = rowsNumber; u >= p; u--) {
             try {
                 landingPage.openLogInPage();

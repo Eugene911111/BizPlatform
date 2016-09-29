@@ -17,9 +17,4 @@ public class Offers extends AbstractPageObject {
     protected final By addedOffer = By.xpath("//div[@class=\"description ng-binding\"][contains(., 'Test Offer')]");
     protected final By deleteButtonForCatalogue = By.xpath("//i[@class=\"ion-close-round close\"]//parent::div[contains(., \"Test Offer\")]//i[@class=\"ion-close-round close\"]");
     protected final static int DEFAULT_NUMBER_OF_OFFERS = 1;
-
-    protected String getTextFromListOfOffers() throws InterruptedException {
-        waiter(addedOffer, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        return driver.findElement(addedOffer).getText();
-    }
 }

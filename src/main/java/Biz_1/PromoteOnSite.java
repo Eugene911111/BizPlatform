@@ -21,14 +21,4 @@ public class PromoteOnSite extends AbstractPageObject {
     protected final By customFieldInPreview = By.xpath("//span[@ng-bind=\"feature.name|translate\"][contains(., 'test custom field')]");
     protected final By downloadButton = By.xpath("//div[@class=\"custom_button_area\"]//button[@class=\"btn btn-green download ng-binding\"]");
 
-
-    protected String getTextFromPreviewPromoteOnSiteCustomField() throws InterruptedException {
-        waiter(additionalInformationInPreview, WebElement::isEnabled, ExpectedConditions::presenceOfElementLocated, 10);
-        return driver.findElement(additionalInformationInPreview).getText();
-    }
-
-    protected String getTextFromPreviewPromoteOnSiteAdditionInformation() throws InterruptedException {
-        waiter(customFieldInPreview, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
-        return driver.findElement(customFieldInPreview).getText();
-    }
 }

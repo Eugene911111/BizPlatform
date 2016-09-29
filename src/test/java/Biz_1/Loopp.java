@@ -44,7 +44,7 @@ public class Loopp {
             landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
             landingPage.waitForElementIsPresentAndClick(landingPage.registerButton);
             landingPage.registerRandomUser();
-            String actualEmailErrorMessage = landingPage.getTextFromLocator(landingPage.registrationWindow);
+            String actualEmailErrorMessage = landingPage.getTextFromElement(landingPage.registrationWindow);
             String expectedErrorMessage = "Мы выслали письмо на указанный Вами электронный адрес. Пожалуйста, подтвердите регистрацию нажав ссылку в высланном письме";
             Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);
             System.out.println("--------- New user registration test # " + i + " passed successfully -------------- ");

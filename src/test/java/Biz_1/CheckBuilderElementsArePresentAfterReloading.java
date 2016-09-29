@@ -7,7 +7,10 @@ import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 
 public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
-    private final String screenshotName = "D:\\screenshot\\mobileBuilder\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
+    public CheckBuilderElementsArePresentAfterReloading() {
+        super("mobileBuilder\\");
+        super.fuckYou();
+    }
 
     @org.junit.Test
     public void checkBuilderElementsArePresentAfterReloading() throws Exception {
@@ -23,8 +26,8 @@ public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
                 log.info("After " + h + " reloading builder elements are displayed correct");
             } catch (Exception e) {
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(screenshot, new File(screenshotName));
-                log.error("Screenshot of the bug was saved to: " + screenshotName);
+                FileUtils.copyFile(screenshot, new File(randScreenshotName));
+                log.error("Screenshot of the bug was saved to: " + randScreenshotName);
                 throw new Exception(e);
             }
         }

@@ -12,7 +12,9 @@ import java.io.IOException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SpecialistCreation extends AbstractTest implements Constants {
-    private final String screenshotName = "D:\\screenshot\\specialist\\" + ft.format(date) + getClass() + "Screenshot.jpg\\";
+    public SpecialistCreation(String subfolder) {
+        super("specialist\\");
+    }
 
     @org.junit.Test
     public void a_categoryCreation() throws InterruptedException {
@@ -29,7 +31,7 @@ public class SpecialistCreation extends AbstractTest implements Constants {
     public void b_specialistCreation() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        specialists.openUrl(specialists.SPECIALISTS_PAGE);
+        specialists.openUrl(Specialists.SPECIALISTS_PAGE);
         specialists.waitForElementIsClickableAndClick(specialists.getAddSpecialistButton());
         specialists.waitForElementIsClickableAndClick(specialists.specialistButton);
         specialists.sendKeysToElementWhenElementIsClickable(specialists.specialistName, "Max");
@@ -50,32 +52,32 @@ public class SpecialistCreation extends AbstractTest implements Constants {
             specialists.waitForElementIsClickableAndClick(specialists.createdSpecialist);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshot, new File(screenshotName));
-            log.error("5 Screenshot of the bug was saved to: " + screenshotName);
+            FileUtils.copyFile(screenshot, new File(randScreenshotName));
+            log.error("5 Screenshot of the bug was saved to: " + randScreenshotName);
             throw new Exception(e);
         }
         try {
             specialists.waitForElementIsClickableAndClick(specialists.editButtonForCreatedSpecialist);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshot, new File(screenshotName));
-            log.error("5 Screenshot of the bug was saved to: " + screenshotName);
+            FileUtils.copyFile(screenshot, new File(randScreenshotName));
+            log.error("5 Screenshot of the bug was saved to: " + randScreenshotName);
             throw new Exception(e);
         }
         try {
             specialists.waitForElementIsClickableAndClick(specialists.deleteButtonForCreatedResource);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshot, new File(screenshotName));
-            log.error("5 Screenshot of the bug was saved to: " + screenshotName);
+            FileUtils.copyFile(screenshot, new File(randScreenshotName));
+            log.error("5 Screenshot of the bug was saved to: " + randScreenshotName);
             throw new Exception(e);
         }
         try {
             specialists.waitForElementIsClickableAndClick(specialists.deleteButton2ForCreatedResource);
         } catch (Exception e) {
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshot, new File(screenshotName));
-            log.error("6 Screenshot of the bug was saved to: " + screenshotName);
+            FileUtils.copyFile(screenshot, new File(randScreenshotName));
+            log.error("6 Screenshot of the bug was saved to: " + randScreenshotName);
             throw new Exception(e);
         }
     }
