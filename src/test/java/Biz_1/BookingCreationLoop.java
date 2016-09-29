@@ -60,7 +60,7 @@ public class BookingCreationLoop {
             booking.sendKeysToElementWhenElementIsClickable(booking.emailField, booking.EMAIL);
             booking.waitForElementIsPresentAndClick(booking.saveButton);
             log.debug("---------Booking # " + (count++) + " is made-------------- ");
-            Thread.sleep(1500); //do not delete, it may not delete the booking
+            Thread.sleep(2500); //do not delete, it may not delete the booking
         }
     }
 
@@ -71,7 +71,7 @@ public class BookingCreationLoop {
                 landingPage.openLogInPage();
                 logInPage.logIn();
                 booking.deleteBooking();
-                System.out.println("Booking # " + (count++) + " deleted");
+                log.debug("Booking # " + (count++) + " deleted");
             } catch (Exception e) {
                 return;
             }
