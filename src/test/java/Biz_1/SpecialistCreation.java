@@ -12,9 +12,11 @@ import java.io.IOException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SpecialistCreation extends AbstractTest implements Constants {
-    public SpecialistCreation(String subfolder) {
+    public SpecialistCreation() {
         super("specialist\\");
     }
+
+    private String field;
 
     @org.junit.Test
     public void a_categoryCreation() throws InterruptedException {

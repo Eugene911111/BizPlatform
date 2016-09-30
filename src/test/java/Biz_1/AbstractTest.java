@@ -117,10 +117,6 @@ public abstract class AbstractTest implements Constants {
         (offers = new Offers()).setDriver(driver);
     }
 
-    protected void fuckYou() {
-        System.out.println("fuck you");
-    }
-
     @After
     public void testShutDown() {
         driver.close();

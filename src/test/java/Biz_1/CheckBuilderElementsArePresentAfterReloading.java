@@ -9,7 +9,6 @@ import java.io.File;
 public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
     public CheckBuilderElementsArePresentAfterReloading() {
         super("mobileBuilder\\");
-        super.fuckYou();
     }
 
     @org.junit.Test
