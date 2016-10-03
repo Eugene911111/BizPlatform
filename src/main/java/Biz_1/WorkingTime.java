@@ -18,7 +18,7 @@ public class WorkingTime extends AbstractPageObject {
     protected final By fieldForOpeningTimeHour1 = By.xpath("//div[@class=\"k-widget k-window wt-app-editor\"]//div[@class=\"time-wrp col-xs-12\"]//table[@class=\"editor-timepicker ng-isolate-scope ng-dirty ng-valid-parse ng-invalid ng-invalid-time\"]//input[@class=\"form-control text-center ng-valid ng-valid-maxlength ng-dirty ng-touched ng-valid-parse\"]");
     protected static final String valueOfSettingTimeHour = "10";
 
-    public void saveChanges() throws InterruptedException {
+    public void saveChanges() throws InterruptedException  {
         Thread.sleep(2000);
         waitForElementIsClickableAndClick(saveButtonn);
     }

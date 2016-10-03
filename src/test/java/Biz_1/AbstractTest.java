@@ -52,7 +52,7 @@ public abstract class AbstractTest implements Constants {
 
     public AbstractTest() {
         SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh.mm.ss a ");
-            randScreenshotName = "D:\\screenshot\\" + ft.format(new Date()) + getClass() + "Screenshot.jpg\\";
+        randScreenshotName = "D:\\screenshot\\" + ft.format(new Date()) + getClass() + "Screenshot.jpg\\";
     }
 
     public AbstractTest(String subfolder) {

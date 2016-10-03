@@ -19,7 +19,7 @@ public class OffersCreation extends AbstractTest {
         offers.waitForElementIsClickableAndClick(offers.addNewOffer);
 //        Thread.sleep(2000);
         offers.sendKeysToElementWhenElementIsPresent(offers.descriptionFieldForBooking, offers.KEYS_TO_OFFERS_DESCRIPTION);
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         offers.waitForElementIsClickableAndClick(offers.saveButton);
         offers.waitForElementIsClickableAndClick(offers.addedOffer);
         String actualOfferDescription = offers.getTextFromElement(offers.addedOffer);

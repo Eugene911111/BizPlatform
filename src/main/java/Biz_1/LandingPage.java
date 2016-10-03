@@ -1,10 +1,6 @@
 package Biz_1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LandingPage extends AbstractPageObject {
     //<<-----------------------------------BUTTONS---------------------------------------------->>
@@ -25,6 +21,7 @@ public class LandingPage extends AbstractPageObject {
     private final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     private final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     protected final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
+    protected String randomUserEmail = ("test.ncube" + Math.random() + 0.1 + "@gmail.com");
 
 //    public String getTextFromLocator(By element1) throws InterruptedException {
 //        WebDriverWait element = new WebDriverWait(driver, 10);
@@ -38,7 +35,7 @@ public class LandingPage extends AbstractPageObject {
         waitForElementIsClickableAndClick(registrationNameField);
         sendKeysToElementWhenElementIsClickable(registrationNameField, SEND_KEYS_TO_REGISTRATION_NAME_FIELD);
         waitForElementIsClickableAndClick(registrationEmailField);
-        sendKeysToElementWhenElementIsClickable(registrationEmailField, ("test.ncube" + Math.random() + 0.1 + "@gmail.com"));
+        sendKeysToElementWhenElementIsClickable(registrationEmailField, (randomUserEmail));
         waitForElementIsClickableAndClick(registrationPasswordField);
         sendKeysToElementWhenElementIsClickable(registrationPasswordField, SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD);
         waitForElementIsClickableAndClick(registrationConfirmationPasswordField);
