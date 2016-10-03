@@ -57,47 +57,47 @@ public abstract class AbstractPageObject {
         WebDriverWait wait1 = new WebDriverWait(driver, 20);
         wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
-
+// !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
- //       try {
-            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-//        } catch (Exception e) {
-//            try {
-//                JavascriptExecutor js = (JavascriptExecutor) driver;
-//                WebElement username = driver.findElement(byElement);
-//                js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
-//
-//                Thread.sleep(4000);
-//                System.out.println("Element is highlighted");
-//                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//                FileUtils.copyFile(screenshot, new File(randScreenshotName));
-//                System.out.println("screen saved");
-//            } catch (Exception e2) {
-//                System.out.println("such element don't exist");
-//                throw new InterruptedException();
-//            }
-//        }
-    }
+        try {
+            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 0);
+        } catch (Exception e) {
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                WebElement username = driver.findElement(byElement);
+                js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
 
+               // Thread.sleep(4000);
+                System.out.println("Element is highlighted");
+                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(screenshot, new File(randScreenshotName));
+                System.out.println("screen saved");
+            } catch (Exception e2) {
+                System.out.println("such element don't exist");
+                throw new InterruptedException();
+            }
+        }
+    }
+    // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
-     //   try {
+        try {
             waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
-//        } catch (Exception e) {
-//            try {
-//                JavascriptExecutor js = (JavascriptExecutor) driver;
-//                WebElement username = driver.findElement(byElement);
-//                js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
-//
-//                Thread.sleep(4000);
-//                System.out.println("Element is highlighted");
-//                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//                FileUtils.copyFile(screenshot, new File(randScreenshotName));
-//                System.out.println("screen saved");
-//            } catch (Exception e2) {
-//                System.out.println("such element don't exist");
-//                throw new InterruptedException();
-//            }
-//        }
+        } catch (Exception e) {
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                WebElement username = driver.findElement(byElement);
+                js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
+
+              //  Thread.sleep(4000);
+                System.out.println("Element is highlighted");
+                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(screenshot, new File(randScreenshotName));
+                System.out.println("screen saved");
+            } catch (Exception e2) {
+                System.out.println("such element don't exist");
+                throw new InterruptedException();
+            }
+        }
     }
 
     protected void waiter(By selector, Consumer<WebElement> consumer, Function<By, ExpectedCondition<WebElement>> function, long seconds) throws InterruptedException {
