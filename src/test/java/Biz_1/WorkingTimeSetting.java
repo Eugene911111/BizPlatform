@@ -10,7 +10,7 @@ public class WorkingTimeSetting extends AbstractTest implements Constants {
     public void a_workingTimeDelete() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        driver.get(workingTime.WORKINGTIME_PAGE);
+        driver.get(workingTime.WORKING_TIME_PAGE);
         workingTime.waitForElementIsClickableAndClick(workingTime.workingTimeButton);
         workingTime.waitForElementIsClickableAndClick(workingTime.deleteWorkingTimeButton);
         workingTime.saveChanges();
@@ -22,7 +22,7 @@ public class WorkingTimeSetting extends AbstractTest implements Constants {
     public void b_workingTimeSetting() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
-        driver.get(workingTime.WORKINGTIME_PAGE);
+        driver.get(workingTime.WORKING_TIME_PAGE);
         workingTime.waitForElementIsClickableAndClick(workingTime.fieldForSettingWorkingTime);
         workingTime.sendKeysToElementWhenElementIsClickable(workingTime.fieldForOpeningTimeHour1, workingTime.valueOfSettingTimeHour);
         //  workingTime.sendKeysToOpeningTimeMinuts();

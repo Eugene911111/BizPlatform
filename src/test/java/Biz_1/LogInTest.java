@@ -1,11 +1,8 @@
 package Biz_1;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.IOException;
-import java.util.List;
 
 public class LogInTest extends AbstractTest implements Constants {
     @org.junit.Test
