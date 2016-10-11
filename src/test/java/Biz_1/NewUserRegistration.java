@@ -12,7 +12,7 @@ public class NewUserRegistration extends AbstractTest {
         landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
         landingPage.waitForElementIsPresentAndClick(landingPage.registerButton);
         landingPage.registerRandomUser();
-        Thread.sleep(5000);
+        landingPage.checkElementIsDisplayed(landingPage.bizplatformLogo);
         String actualUrl = driver.getCurrentUrl();
         String expectedUrl = "http://bizplatform.co/Account/EmailVerification?email=" + landingPage.randomUserEmail;
         Assert.assertEquals(expectedUrl, actualUrl);
@@ -24,5 +24,6 @@ public class NewUserRegistration extends AbstractTest {
         int responseCodeesponseCode = connection.getResponseCode();
         Assert.assertEquals(responseCodeesponseCode, 200);
         log.info("Response Code: "+ responseCodeesponseCode);
+        log.info("User number is registered");
     }
 }
