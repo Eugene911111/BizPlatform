@@ -1,9 +1,5 @@
 package Biz_1;
 
-import org.openqa.selenium.WebElement;
-
-import java.util.concurrent.TimeUnit;
-
 public class CheckBuilderElementsArePresent extends AbstractTest {
 
     @org.junit.Test

@@ -79,7 +79,7 @@ public class CheckListOfBenefits extends AbstractTest implements Constants {
             log.error("The number of Benefits in list is " + BenefitsCount4);
             throw new InterruptedException();
         }
-        //------------check that custom field is added to preview
+        //-- ----------check that custom field is added to preview
         String actualEmailErrorMessage = promoteOnSite.getTextFromElement(promoteOnSite.customFieldInPreview);
         String expectedErrorMessage = "test custom field";
         Assert.assertEquals(actualEmailErrorMessage, expectedErrorMessage);

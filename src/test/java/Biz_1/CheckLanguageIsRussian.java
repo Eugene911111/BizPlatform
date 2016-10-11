@@ -19,6 +19,7 @@ public class CheckLanguageIsRussian extends AbstractTest {
         String actualTextFromGlobalSettingsPageTitle = globalSettings.getTextFromElement(globalSettings.GLOBAL_PAGE_TITLE);
         String expectedTextFromGlobalSettingsPageTitle = "ГЛОБАЛЬНЫЕ НАСТРОЙКИ";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);
+
     }
 
 }

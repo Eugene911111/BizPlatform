@@ -23,4 +23,5 @@ public class Catalogue extends AbstractPageObject {
     protected final By saveCategoryTitleButton = By.xpath("//div[@class=\"full-height builder ng-scope\"]//button[@class=\"btn btn-green ng-scope\"]");
     protected final By saveItemTitleButton = By.xpath("//div[@class=\"line\"]//button[@class=\"btn btn-green form-save-btn ng-scope\"]");
     protected final By addedTestItem = By.xpath("//div[@class=\"card options draggable-item ng-scope\"]//div[@class=\"name ng-binding\"][contains(., \"Test Item Name\")]");
+
 }

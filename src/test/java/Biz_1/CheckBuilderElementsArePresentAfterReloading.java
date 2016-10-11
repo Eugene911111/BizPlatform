@@ -13,7 +13,6 @@ public class CheckBuilderElementsArePresentAfterReloading extends AbstractTest {
 
     @org.junit.Test
     public void checkBuilderElementsArePresentAfterReloading() throws Exception {
-
         landingPage.openLogInPage();
         logInPage.logIn();
         mobileBuilder.openUrl(mobileBuilder.MOBILE_BUILDER);

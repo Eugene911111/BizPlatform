@@ -20,6 +20,5 @@ public class LogOutTest extends AbstractTest implements Constants {
             log.error("User was not logged out ");
             throw new Exception(e);
         }
-
     }
 }
