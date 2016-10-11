@@ -22,9 +22,9 @@ public class BookingCreationLoop {
     protected GlobalSettings globalSettings;
     protected Specialists specialists;
     protected WorkingTime workingTime;
-    protected static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
-    protected int rowsNumber = 89;
-    protected int delta = 3; // change the number of bookings (delta-1)
+    protected static final Logger log = LoggerFactory.getLogger(BookingCreation.class);
+    protected int rowsNumber = 96;
+    protected int delta = 4; // change the number of bookings (delta-1)
     protected int p = rowsNumber - delta;
     protected int count = 1;
 

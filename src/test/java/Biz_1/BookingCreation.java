@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class MakingBooking extends AbstractTest {
+public class BookingCreation extends AbstractTest {
     private final String EXPECTED_CLIENT_NAME = "Eugene";
 
-    private static final Logger log = LoggerFactory.getLogger(MakingBooking.class);
+    private static final Logger log = LoggerFactory.getLogger(BookingCreation.class);
 
     @org.junit.Test
     public void bookingCreation() throws InterruptedException {
@@ -20,7 +20,7 @@ public class MakingBooking extends AbstractTest {
         booking.sendKeysToElementWhenElementIsClickable(booking.phoneNumberField, booking.PHONE_NUMBER);
         booking.sendKeysToElementWhenElementIsClickable(booking.emailField, booking.EMAIL);
         booking.waitForElementIsClickableAndClick(booking.saveButton);
-        booking.waitForElementIsClickableAndClick(booking.bookingWithMadeButton);
+        booking.checkElementIsDisplayed(booking.bookingWithMadeButton);
 
         //   String actualClientName = landingPage.getTextFromLocator(booking.booking1);
         //String actualClientName = landingPage.getTextFromLocator(booking.booking1);

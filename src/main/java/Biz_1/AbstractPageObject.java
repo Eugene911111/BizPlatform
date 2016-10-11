@@ -57,7 +57,8 @@ public abstract class AbstractPageObject {
         WebDriverWait wait1 = new WebDriverWait(driver, 20);
         wait1.until(ExpectedConditions.invisibilityOfElementLocated(element));
     }
-// !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------------------
+
+    // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
         try {
             waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
@@ -67,7 +68,7 @@ public abstract class AbstractPageObject {
                 WebElement username = driver.findElement(byElement);
                 js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
 
-               // Thread.sleep(4000);
+                // Thread.sleep(4000);
                 System.out.println("Element is highlighted");
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(screenshot, new File(randScreenshotName));
@@ -78,6 +79,7 @@ public abstract class AbstractPageObject {
             }
         }
     }
+
     // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
         try {
@@ -88,7 +90,7 @@ public abstract class AbstractPageObject {
                 WebElement username = driver.findElement(byElement);
                 js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
 
-              //  Thread.sleep(4000);
+                //  Thread.sleep(4000);
                 System.out.println("Element is highlighted");
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(screenshot, new File(randScreenshotName));
