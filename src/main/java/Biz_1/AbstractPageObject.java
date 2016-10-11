@@ -60,7 +60,7 @@ public abstract class AbstractPageObject {
 // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
         try {
-            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 0);
+            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
         } catch (Exception e) {
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
