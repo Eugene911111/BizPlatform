@@ -67,14 +67,16 @@ public abstract class AbstractPageObject {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 WebElement username = driver.findElement(byElement);
                 js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
-
                 // Thread.sleep(4000);
-                System.out.println("Element is highlighted");
+                logger.debug("Element is highlighted");
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(screenshot, new File(randScreenshotName));
-                System.out.println("screen saved");
+                logger.debug("screen saved");
+   //---------NEW- - Check how it workes
+                Thread.sleep(2000);
+                driver.findElement(byElement).click();
             } catch (Exception e2) {
-                System.out.println("such element don't exist");
+                logger.error("such element don't exist: " + byElement);
                 throw new InterruptedException();
             }
         }
@@ -91,12 +93,14 @@ public abstract class AbstractPageObject {
                 js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
 
                 //  Thread.sleep(4000);
-                System.out.println("Element is highlighted");
+                logger.debug("Element is highlighted");
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(screenshot, new File(randScreenshotName));
-                System.out.println("screen saved");
+                logger.debug("screen saved");
+                Thread.sleep(2000);
+                driver.findElement(byElement).click();
             } catch (Exception e2) {
-                System.out.println("such element don't exist");
+                logger.error("such element don't exist");
                 throw new InterruptedException();
             }
         }

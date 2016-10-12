@@ -16,7 +16,6 @@ public class CheckLanguageIsEnglish extends AbstractTest {
         String actualTextFromGlobalSettingsPageTitle = globalSettings.getTextFromElement(globalSettings.GLOBAL_PAGE_TITLE);
         String expectedTextFromGlobalSettingsPageTitle = "GLOBAL SETTINGS";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);
-
     }
 
 }

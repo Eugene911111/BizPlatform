@@ -2,7 +2,9 @@ package Biz_1;
 //Opennig time should be specified fro 00.00-23.59
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BookingCreationLoop {
 
     protected WebDriver driver;
@@ -47,7 +49,7 @@ public class BookingCreationLoop {
 
 
     @Test
-    public void bookingCreation() throws InterruptedException {
+    public void a_bookingCreation() throws InterruptedException {
 
         for (int u = rowsNumber; u >= p; u--) {
             landingPage.openLogInPage();
@@ -66,7 +68,7 @@ public class BookingCreationLoop {
     }
 
     @Test
-    public void bookingsDelete() throws InterruptedException {
+    public void b_bookingsDelete() throws InterruptedException {
         for (int u = rowsNumber; u >= p; u--) {
             try {
                 landingPage.openLogInPage();

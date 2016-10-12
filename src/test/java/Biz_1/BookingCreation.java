@@ -12,7 +12,7 @@ public class BookingCreation extends AbstractTest {
     private static final Logger log = LoggerFactory.getLogger(BookingCreation.class);
 
     @org.junit.Test
-    public void bookingCreation() throws InterruptedException {
+    public void a_bookingCreation() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
         booking.waitForElementIsClickableAndClick(booking.bookingField);
@@ -30,7 +30,7 @@ public class BookingCreation extends AbstractTest {
     }
 
     @org.junit.Test
-    public void bookingDelete() throws InterruptedException {
+    public void b_bookingDelete() throws InterruptedException {
         landingPage.openLogInPage();
         logInPage.logIn();
         booking.deleteBooking();

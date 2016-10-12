@@ -24,6 +24,6 @@ public class NewUserRegistration extends AbstractTest {
         int responseCodeesponseCode = connection.getResponseCode();
         Assert.assertEquals(responseCodeesponseCode, 200);
         log.info("Response Code: "+ responseCodeesponseCode);
-        log.info("User number is registered");
+        log.info("User is registered");
     }
 }
