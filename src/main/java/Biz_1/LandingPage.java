@@ -22,7 +22,7 @@ public class LandingPage extends AbstractPageObject {
     protected final String SEND_KEYS_TO_REGISTRATION_NAME_FIELD = "I_am_test";
     protected final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     protected final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
-    protected String randomUserEmail = ("test.ncube" + Math.random() + 0.1 + "@gmail.com");
+    protected String randomUserEmail = ("golubeugene91155+" + Math.random() + 0.1 + "@gmail.com");
     protected final By bizplatformLogo = By.xpath("//section[@class=\"row-fluid\"]//img[@class=\"bizplatform-logo\"]");
 
 

@@ -7,7 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class NewUserRegistration extends AbstractTest {
-    @Ignore
     @org.junit.Test
     public void newUserRegistration() throws Exception {
         landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);

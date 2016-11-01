@@ -39,11 +39,11 @@ public class RegistrationSeveralUsers implements Constants {
     public void testShutDown() {
         driver.close();
     }
-@Ignore
+
     @org.junit.Test
     public void newUserRegistration() throws Exception {
-        for (int i = 1; i <= 1; i++) {
-            String randomUserEmail = ("test.ncube" + Math.random() + 0.1 + "@gmail.com");
+        for (int i = 1; i <= 3; i++) {
+            String randomUserEmail = ("golubeugene91155+" + Math.random() + 0.1 + "@gmail.com");
             landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
             landingPage.waitForElementIsPresentAndClick(landingPage.registerButton);
             landingPage.waitForElementIsClickableAndClick(landingPage.registrationNameField);
