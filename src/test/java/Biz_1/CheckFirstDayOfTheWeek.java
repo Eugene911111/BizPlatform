@@ -1,9 +1,11 @@
 package Biz_1;
 
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 import java.util.Objects;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CheckFirstDayOfTheWeek extends AbstractTest {
 
     @org.junit.Test
@@ -36,7 +38,7 @@ public class CheckFirstDayOfTheWeek extends AbstractTest {
         String expectedTextFromGlobalSettingsPageTitle = "GLOBAL SETTINGS";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);
         workingTime.openUrl(workingTime.WORKING_TIME_PAGE);
-        workingTime.checkElementIsDisplayed(workingTime.todayButton);
+        workingTime.checkElementIsDisplayed(workingTime.todayButtonOnWorkingTime);
         String sunday = workingTime.getTextFromElement(workingTime.firstDayInColumn);
         String dateOfTheFirstDay1 = sunday.split(",")[0];
         Assert.assertEquals(dateOfTheFirstDay1, "SUN");
@@ -56,7 +58,7 @@ public class CheckFirstDayOfTheWeek extends AbstractTest {
         String expectedTextFromGlobalSettingsPageTitle = "ГЛОБАЛЬНЫЕ НАСТРОЙКИ";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);
         workingTime.openUrl(workingTime.WORKING_TIME_PAGE);
-        workingTime.checkElementIsDisplayed(workingTime.todayButton);
+        workingTime.checkElementIsDisplayed(workingTime.todayButtonOnWorkingTime);
         String sunday = workingTime.getTextFromElement(workingTime.firstDayInColumn);
         String dateOfTheFirstDay1 = sunday.split(",")[0];
         Assert.assertEquals(dateOfTheFirstDay1, "ПН");

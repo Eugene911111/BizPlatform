@@ -1,9 +1,6 @@
 package Biz_1;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
@@ -42,10 +39,10 @@ public class RegistrationSeveralUsers implements Constants {
     public void testShutDown() {
         driver.close();
     }
-
+@Ignore
     @org.junit.Test
     public void newUserRegistration() throws Exception {
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i <= 1; i++) {
             String randomUserEmail = ("test.ncube" + Math.random() + 0.1 + "@gmail.com");
             landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
             landingPage.waitForElementIsPresentAndClick(landingPage.registerButton);

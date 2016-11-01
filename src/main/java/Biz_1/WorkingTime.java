@@ -21,7 +21,8 @@ public class WorkingTime extends AbstractPageObject {
     protected final By week = By.xpath("//label[@class=\"working-time-month-label ng-binding\"]");
     protected final By lastDayOfTheWeek = By.xpath("//div[@class=\"k-scheduler-header-wrap iScroll\"]//th[@class=\"k-slot-cell\"][7]");
     protected final By arrowRight = By.xpath("//i[@class=\"fa fa-angle-right\"]//parent::button[@class=\"btn btn-default navigation-btn\"]");
-    protected final By todayButton = By.xpath("//div[@class=\"button-block-left col-xs-12 col-sm-6\"]//button[@class=\"btn btn-default text-uppercase ng-binding\"]");
+    protected final By todayButton = By.xpath("//li[@class=\"k-state-default k-header k-nav-today\"]");
+    protected final By todayButtonOnWorkingTime = By.xpath("//button[@ng-click=\"schedulerCtrl.today()\"]");
     protected final By firstDayInColumn = By.xpath("//div[@class=\"k-scheduler-header k-state-default\"]//th[@class=\"k-slot-cell\"][1]");
 
 

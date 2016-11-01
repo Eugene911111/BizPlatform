@@ -11,18 +11,17 @@ import java.util.Date;
  */
 public class CheckCurrentDateInBookings extends AbstractTest {
 
-
-    @org.junit.Test
-    public void a_checkCurrentDate() throws InterruptedException {
+@org.junit.Test
+public void a_checkCurrentDate()throws InterruptedException{
         landingPage.openLogInPage();
         logInPage.logIn();
         driver.get(booking.BOOKING_PAGE);
-        String currentDay = booking.getTextFromElement(booking.currentDate);
-        String currentDate = currentDay.split(" ")[1];
-        DateFormat dateFormat = new SimpleDateFormat("dd");
-        Date date = new Date();
-        String realDate = (dateFormat.format(date));
-        Assert.assertEquals(currentDate, realDate);
-        log.info("Today is " + currentDay);
-    }
-}
+        String currentDay=booking.getTextFromElement(booking.currentDate);
+        String currentDate=currentDay.split(" ")[1];
+        DateFormat dateFormat=new SimpleDateFormat("dd");
+        Date date=new Date();
+        String realDate=(dateFormat.format(date));
+        Assert.assertEquals(currentDate,realDate);
+        log.info("Today is "+currentDay);
+        }
+        }

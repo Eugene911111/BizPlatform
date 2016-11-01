@@ -1,12 +1,13 @@
 package Biz_1;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class NewUserRegistration extends AbstractTest {
-
+    @Ignore
     @org.junit.Test
     public void newUserRegistration() throws Exception {
         landingPage.openUrl(landingPage.BIZPLATFORM_MAIN);
@@ -23,7 +24,7 @@ public class NewUserRegistration extends AbstractTest {
         connection.connect();
         int responseCodeesponseCode = connection.getResponseCode();
         Assert.assertEquals(responseCodeesponseCode, 200);
-        log.info("Response Code: "+ responseCodeesponseCode);
+        log.info("Response Code: " + responseCodeesponseCode);
         log.info("User is registered");
     }
 }

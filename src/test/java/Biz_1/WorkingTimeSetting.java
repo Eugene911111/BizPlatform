@@ -5,7 +5,6 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class WorkingTimeSetting extends AbstractTest implements Constants {
-
     @org.junit.Test
     public void a_workingTimeDelete() throws InterruptedException {
         landingPage.openLogInPage();

@@ -26,10 +26,10 @@ public class Specialists extends AbstractPageObject {
     protected final By delete = By.xpath("//button[@class=\"btn btn-green ng-binding\"]");
     protected
     @Getter
-    final By createdSpecialist = By.xpath("//section[@class=\"state-menu service-container scroll-body resources-menu ng-scope\"]//div[@class=\"reser-type ng-scope\"][contains(., 'Max')]");
+    final By createdSpecialist = By.xpath("//div[@class=\"item-wrapper ng-scope\"][contains(., 'Max')]");
     protected
     @Getter
-    final By editButtonForCreatedSpecialist = By.xpath("//section[@class=\"state-menu service-container scroll-body resources-menu ng-scope\"]//div[@class=\"reser-type ng-scope\"][contains(., 'Max')]/div[@id=\"resource-edit-button\"]");
+    final By editButtonForCreatedSpecialist = By.xpath("//div[@class=\"item-wrapper ng-scope\"][contains(., 'Max')]//div[@class=\"edit-button\"]/i");
     protected final By deleteButtonForCreatedResource = By.xpath("//div[@class=\"buttons-block\"]//button[@class=\"btn ng-binding\"]");
     protected final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
 

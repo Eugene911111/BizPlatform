@@ -61,13 +61,12 @@ public abstract class AbstractPageObject {
     // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
         try {
-            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 15);
         } catch (Exception e) {
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 WebElement username = driver.findElement(byElement);
                 js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", username);
-                // Thread.sleep(4000);
                 logger.debug("Element is highlighted");
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 FileUtils.copyFile(screenshot, new File(randScreenshotName));
@@ -85,7 +84,7 @@ public abstract class AbstractPageObject {
     // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsPresentAndClick(By byElement) throws InterruptedException {
         try {
-            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 10);
+            waiter(byElement, WebElement::click, ExpectedConditions::presenceOfElementLocated, 15);
         } catch (Exception e) {
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -100,7 +99,7 @@ public abstract class AbstractPageObject {
                 Thread.sleep(2000);
                 driver.findElement(byElement).click();
             } catch (Exception e2) {
-                logger.error("such element don't exist");
+                logger.error("such element don't exist" + byElement);
                 throw new InterruptedException();
             }
         }

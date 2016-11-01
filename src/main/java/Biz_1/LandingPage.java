@@ -7,7 +7,7 @@ public class LandingPage extends AbstractPageObject {
     protected final By logInButton = By.xpath("//div[@id=\"wrap\"]//a[@class=\"login\"]");
     protected final By registerButton = By.xpath(".//*[@id='nav']//a[@href=\"#join\"]");
     protected final By tryForFreeButton = By.xpath("//button[@ng-click=\"vm.register()\"]");
-    protected final By userButton = By.xpath("//div[@class=\"btn-group dropdown\"]//button[@id=\"single-button\"]");
+    protected final By userButton = By.xpath("//button[@id=\"single-button\"]");
     protected final By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"command.logout()\"]");
 
 

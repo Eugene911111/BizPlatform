@@ -17,12 +17,12 @@ public class OpeningTimeCheck extends AbstractTest implements Constants {
         logInPage.logIn();
         driver.get(workingTime.WORKING_TIME_PAGE);
         String firstDayOfTheWeekFromcalendar = workingTime.getTextFromElement(workingTime.firstDayOfTheWeek);
-        String dateOfTheFirstDay = firstDayOfTheWeekFromcalendar.split(",")[1];
+        String dateOfTheFirstDay = firstDayOfTheWeekFromcalendar.split(", ")[1];
         String durationOfTheWeek = workingTime.getTextFromElement(workingTime.week);
         String dateOfTheFirstDay1 = durationOfTheWeek.split(" ")[1];
         Assert.assertEquals(dateOfTheFirstDay, dateOfTheFirstDay1);
         String lastDayOfTheWeekFromcalendar = workingTime.getTextFromElement(workingTime.lastDayOfTheWeek);
-        String lastDayOfTheWeek = lastDayOfTheWeekFromcalendar.split(",")[1];
+        String lastDayOfTheWeek = lastDayOfTheWeekFromcalendar.split(", ")[1];
         String lastOfTheFirstDay1 = durationOfTheWeek.split(" ")[4];
         Assert.assertEquals(lastDayOfTheWeek, lastOfTheFirstDay1);
 
@@ -44,12 +44,12 @@ public class OpeningTimeCheck extends AbstractTest implements Constants {
         driver.get(workingTime.WORKING_TIME_PAGE);
         workingTime.waitForElementIsClickableAndClick(workingTime.arrowRight);
         String firstDayOfTheWeekFromCalendar = workingTime.getTextFromElement(workingTime.firstDayOfTheWeek);
-        String dateOfTheFirstDay = firstDayOfTheWeekFromCalendar.split(",")[1];
+        String dateOfTheFirstDay = firstDayOfTheWeekFromCalendar.split(", ")[1];
         String durationOfTheWeek = workingTime.getTextFromElement(workingTime.week);
         String dateOfTheFirstDay1 = durationOfTheWeek.split(" ")[1];
         Assert.assertEquals(dateOfTheFirstDay, dateOfTheFirstDay1);
         String lastDayOfTheWeekFromCalendar = workingTime.getTextFromElement(workingTime.lastDayOfTheWeek);
-        String lastDayOfTheWeek = lastDayOfTheWeekFromCalendar.split(",")[1];
+        String lastDayOfTheWeek = lastDayOfTheWeekFromCalendar.split(", ")[1];
         String lastOfTheFirstDay1 = durationOfTheWeek.split(" ")[4];
         Assert.assertEquals(lastDayOfTheWeek, lastOfTheFirstDay1);
         Thread.sleep(5000);
