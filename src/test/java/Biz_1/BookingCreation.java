@@ -10,7 +10,7 @@ public class BookingCreation extends AbstractTest {
     private final String EXPECTED_CLIENT_NAME = "Eugene";
 
     private static final Logger log = LoggerFactory.getLogger(BookingCreation.class);
-
+@Ignore
     @org.junit.Test
     public void a_bookingCreation() throws InterruptedException {
         landingPage.openLogInPage();
@@ -28,7 +28,7 @@ public class BookingCreation extends AbstractTest {
         // Assert.assertEquals(EXPECTED_CLIENT_NAME, actualClientName);
         log.debug("---------Booking is made-------------- ");
     }
-
+    @Ignore
     @org.junit.Test
     public void b_bookingDelete() throws InterruptedException {
         landingPage.openLogInPage();

@@ -61,6 +61,6 @@ public class CheckFirstDayOfTheWeek extends AbstractTest {
         workingTime.checkElementIsDisplayed(workingTime.todayButtonOnWorkingTime);
         String sunday = workingTime.getTextFromElement(workingTime.firstDayInColumn);
         String dateOfTheFirstDay1 = sunday.split(",")[0];
-        Assert.assertEquals(dateOfTheFirstDay1, "ПН");
+        Assert.assertEquals(dateOfTheFirstDay1, "ВС");
     }
 }

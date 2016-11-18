@@ -10,7 +10,7 @@ public class Resources extends AbstractPageObject {
     protected final By resourceButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@class=\"ng-binding ng-scope\"][@href=\"#/bookings/resources/new\"]");
     protected final By fieldForResourceName = By.xpath("//div[@class=\"input-row\"]//input[@type=\"text\"]");
     protected final By fieldForCategoryName = By.xpath("//input[@name=\"name\"]");
-    protected final By dropDownButtonToSelectCategory = By.xpath("//div[@class=\"input-row\"]//span[@class=\"custom-select-wrapper\"]/select//option[@label=\"New Test Category\"]");
+    protected final By dropDownButtonToSelectCategory = By.xpath("//div[@class=\"input-row\"]//span[@class=\"custom-select-wrapper\"]");
     protected String CREATED_CATEGORY_IN_LIST = "//span[@class=\"group-name ng-binding ng-scope\"][contains(., 'New Test Category')]";
     protected final By editButtonForCategory = By.xpath("//span[@class=\"group-name ng-binding ng-scope\"][contains(., 'r')]//following-sibling::*//i[@class=\"fa fa-pencil edit-group-icon\"]");
     protected final By saveButton = By.xpath("//button[@class=\"btn btn-green ng-binding\"]");
@@ -20,7 +20,12 @@ public class Resources extends AbstractPageObject {
     protected final By editButtonForCreatedResource = By.xpath("//div[@class=\"panel panel-default panel-open\"][contains(., \"NEW TEST\")]//div[@class=\"edit-button\"]");
     protected final By deleteButtonForCreatedResource = By.xpath("//div[@class=\"buttons-block\"]//button[@class=\"btn ng-binding\"]");
     protected final By deleteButton2ForCreatedResource = By.xpath("//div[@class=\"modal-footer\"]//button[@class=\"btn btn-green ng-binding\"]");
-    protected @Getter final By addResourceButton = By.xpath("//i[@class=\"ion-plus\"]");
+    protected final By addResourceButton = By.xpath("//div[@class=\"add-button-wrapper\"]//span");
+    protected final By createdCategory = By.xpath("//span[@class=\"group-name ng-binding ng-scope\"][contains(., \"New Test Category\")]");
+    protected final By selectCategoryInDropDown = By.xpath("//span[@class=\"custom-select-wrapper\"]//option[contains(., 'New Test Category')]");
+    protected final By createdResource1 = By.xpath("//div[@class=\"panel-heading\"]//span[@class=\"group-name ng-binding ng-scope\"][contains(., 'New Test Category')]//following::span[@class=\"text ng-binding\"][contains(., 'NEW TEST RESOURCE')]");
+
+
 
     public void deleteCreatedCategory() throws InterruptedException {
         waitForElementIsClickableAndClick(editButtonForCategory);
@@ -29,7 +34,7 @@ public class Resources extends AbstractPageObject {
     }
 
     public void deleteCreatedResource() throws InterruptedException {
-        waitForElementIsClickableAndClick(createdResource);
+        waitForElementIsClickableAndClick(createdResource1);
         waitForElementIsClickableAndClick(editButtonForCreatedResource);
         waitForElementIsClickableAndClick(deleteButtonForCreatedResource);
         waitForElementIsClickableAndClick(deleteButton2ForCreatedResource);
@@ -40,5 +45,6 @@ public class Resources extends AbstractPageObject {
         waitForElementIsClickableAndClick(categoryButton);
         sendKeysToElementWhenElementIsClickable(fieldForCategoryName, "New Test Category");
         waitForElementIsClickableAndClick(saveButton);
+
     }
 }

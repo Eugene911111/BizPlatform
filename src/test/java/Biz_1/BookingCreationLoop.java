@@ -1,9 +1,6 @@
 package Biz_1;
 //Opennig time should be specified fro 00.00-23.59
-import org.junit.After;
-import org.junit.Before;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,7 +44,7 @@ public class BookingCreationLoop {
 
     }
 
-
+    @Ignore
     @Test
     public void a_bookingCreation() throws InterruptedException {
 
@@ -66,7 +63,7 @@ public class BookingCreationLoop {
             Thread.sleep(2500); //do not delete, it may not delete the booking
         }
     }
-
+    @Ignore
     @Test
     public void b_bookingsDelete() throws InterruptedException {
         for (int u = rowsNumber; u >= p; u--) {

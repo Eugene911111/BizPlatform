@@ -1,6 +1,7 @@
 package Biz_1;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.Date;
  * Created by egolub on 10/11/2016.
  */
 public class OpeningTimeCheck extends AbstractTest implements Constants {
-
+    @Ignore
     @org.junit.Test
     public void a_checkCurrentDate() throws InterruptedException {
         landingPage.openLogInPage();
@@ -36,7 +37,7 @@ public class OpeningTimeCheck extends AbstractTest implements Constants {
 //
 
     }
-
+    @Ignore
     @org.junit.Test
     public void b_checkCurrentDateAfterSelectingNextWeek() throws InterruptedException {
         landingPage.openLogInPage();

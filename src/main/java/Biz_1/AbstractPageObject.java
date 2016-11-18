@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.SystemClock;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,13 +42,25 @@ public abstract class AbstractPageObject {
     protected void findElementsAndSendKeys(By element, String sendKeys) throws InterruptedException {
         driver.findElement(element).sendKeys(sendKeys);
     }
+public boolean check(){
 
-    public void checkElementIsDisplayed(By element) throws InterruptedException {
+    return true;
+}
+
+    public boolean checkElementIsDisplayed(By element) throws InterruptedException {
         //waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
         //check it
-        WebDriverWait wait1 = new WebDriverWait(driver, 15);
-        wait1.until(ExpectedConditions.visibilityOfElementLocated(element));
+        WebDriverWait wait1 = new WebDriverWait(driver, 25);
+        WebElement e = wait1.until(ExpectedConditions.visibilityOfElementLocated(element));
+        return e!=null;
     }
+
+    public boolean checkElementIsDisplayed2(By element) throws InterruptedException {
+        WebDriverWait wait1 = new WebDriverWait(driver, 25);
+        WebElement e = wait1.until(ExpectedConditions.visibilityOfElementLocated(element));
+        return e!=null;
+    }
+
 
     public void imageIsDisplayed(By image) throws InterruptedException {
         waiter(image, WebElement::isEnabled, ExpectedConditions::presenceOfElementLocated, 15);
@@ -61,7 +74,7 @@ public abstract class AbstractPageObject {
     // !!!!!!!!!!!!проверить !!!!!!!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------------------
     public void waitForElementIsClickableAndClick(By byElement) throws InterruptedException {
         try {
-            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 15);
+            waiter(byElement, WebElement::click, ExpectedConditions::elementToBeClickable, 25);
         } catch (Exception e) {
             try {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -129,7 +142,7 @@ public abstract class AbstractPageObject {
     }
 
     protected String getTextFromElement(By element) throws InterruptedException {
-        waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+        waiter(element, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 20);
         return driver.findElement(element).getText();
     }
 

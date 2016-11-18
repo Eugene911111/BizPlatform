@@ -8,7 +8,7 @@ public class LandingPage extends AbstractPageObject {
     protected final By registerButton = By.xpath(".//*[@id='nav']//a[@href=\"#join\"]");
     protected final By tryForFreeButton = By.xpath("//button[@ng-click=\"vm.register()\"]");
     protected final By userButton = By.xpath("//button[@id=\"single-button\"]");
-    protected final By logOutButton = By.xpath("//ul[@class=\"dropdown-menu\"]//a[@ng-click=\"command.logout()\"]");
+    protected final By logOutButton = By.xpath("//a[@ng-click=\"command.logout()\"]");
 
 
     //<<-----------------------------------FIELDS---------------------------------------------->>
@@ -23,7 +23,7 @@ public class LandingPage extends AbstractPageObject {
     protected final String SEND_KEYS_TO_REGISTRATION_PASSWORD_FIELD = "249756210";
     protected final By registrationWindow = By.xpath("//div[@class='gray-border']//following-sibling::p");
     protected String randomUserEmail = ("golubeugene91155+" + Math.random() + 0.1 + "@gmail.com");
-    protected final By bizplatformLogo = By.xpath("//section[@class=\"row-fluid\"]//img[@class=\"bizplatform-logo\"]");
+    protected final By bizplatformLogo = By.xpath("//div[@class=\"span4 register-section\"]//img");
 
 
 

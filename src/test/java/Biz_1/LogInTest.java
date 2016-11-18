@@ -11,6 +11,7 @@ public class LogInTest extends AbstractTest implements Constants {
         landingPage.openLogInPage();
         logInPage.logIn();
         landingPage.waiter(BOOKING_BUTTON, WebElement::isDisplayed, ExpectedConditions::presenceOfElementLocated, 10);
+
     }
 }
 

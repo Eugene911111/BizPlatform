@@ -17,5 +17,4 @@ public class CheckLanguageIsEnglish extends AbstractTest {
         String expectedTextFromGlobalSettingsPageTitle = "GLOBAL SETTINGS";
         Assert.assertEquals(actualTextFromGlobalSettingsPageTitle, expectedTextFromGlobalSettingsPageTitle);
     }
-
 }
