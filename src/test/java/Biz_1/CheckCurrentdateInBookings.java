@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by egolub on 10/11/2016.
  */
-public class CheckCurrentDateInBookings extends AbstractTest {
+class CheckCurrentDateInBookings extends AbstractTest {
 
 @org.junit.Test
 public void a_checkCurrentDate()throws InterruptedException{

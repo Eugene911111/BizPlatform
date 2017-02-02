@@ -46,9 +46,9 @@ public abstract class AbstractTest implements Constants {
     protected static ChromeDriverService service;
     protected Catalogue catalogue;
     protected Offers offers;
-    protected static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\egolub\\IdeaProjects\\BizTests\\driver\\chromedriver.exe";
+    protected static final String PATH_TO_CHROMEDRIVER_EXE = "C:\\Users\\Eugene\\IdeaProjects\\Biz_1\\chromedriver.exe";
     protected final String BOOKING_PAGE = "http://bizplatform.co/";
-    private String driverName = "firefox";
+    private String driverName = "chrome";
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
     protected final String randScreenshotName;
